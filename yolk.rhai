@@ -31,6 +31,11 @@ export let eggs = #{
     targets: "~/.config/kitty",
     templates: ["kitty.conf"],
     enabled: true
+  },
+  mako: #{
+    targets: "~/.config/mako",
+    templates: ["config"],
+    enabled: true
   }
 };
 
