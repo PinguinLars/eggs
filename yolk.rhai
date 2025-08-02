@@ -16,6 +16,11 @@ export let eggs = #{
     targets: "~/.config/waybar",
     templates: ["config.jsonc","style.css"],
     enabled: true,
+  },
+  niri: #{
+    targets: "~/.config/niri",
+    templates: ["config.kdl"],
+    enabled: true,
   }
 };
 
