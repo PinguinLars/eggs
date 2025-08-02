@@ -1,0 +1,126 @@
+/*noinspection CssNoGenericFontName*/
+* {
+  /*{#rq(data.font)#}*/
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 13px;
+  margin-top: 1px;
+}
+
+/*noinspection CssInvalidHtmlTagReference,SpellCheckingInspection*/
+window#waybar {
+  background: transparent;
+}
+
+#workspaces {
+  border-radius: 5px;
+}
+
+#workspaces button {
+  /*{#rcol(data.colors.on_background)#}*/
+  color: #e4e1e9;
+  /*{#rcol(data.colors.background)#}*/
+  background-color: #131318;
+  border-radius: 10px;
+}
+
+#workspaces button.empty {
+  /*{#rcol(data.colors.surface_bright)#}*/
+  color: #39393f;
+}
+
+#workspaces button.focused {
+  /*{#rcol(data.colors.primary_container)#}*/
+  background-color: #3a4379;
+  /*{#rcol(data.colors.primary)#}*/
+  color: #bbc3ff;
+}
+
+#network,
+#clock,
+#power-profiles-daemon,
+#battery,
+#systemd-failed-units,
+#pulseaudio,
+#privacy,
+#backlight,
+#bluetooth,
+#custom-power,
+#custom-lock,
+#custom-reboot,
+#cpu,
+#disk,
+#load,
+#temperature,
+#memory {
+  padding: 0 10px;
+  /*{#rcol(data.colors.primary)#}*/
+  color: #bbc3ff;
+  /*{#rcol(data.colors.background)#}*/
+  background-color: #131318;
+  /*{#rcol(data.colors.on_background)#}*/
+  border-radius: 10px;
+}
+
+#network.disconnected {
+  /*{#rcol(data.colors.error)#}*/
+  color: #ffb4ab;
+}
+
+#network.linked {
+  /*{#rcol(data.colors.error_container)#}*/
+  color: #93000a;
+}
+
+@keyframes blink {
+  to {
+    /*{#rcol(data.colors.error)#}*/
+    color: #ffb4ab;
+    /*{#rcol(data.colors.on_error)#}*/
+    background: #690005;
+  }
+}
+
+#battery.warning,
+#systemd-failed-units.degraded {
+  /*{#rcol(data.colors.error)#}*/
+  color: #ffb4ab;
+}
+
+#battery.low {
+  /*{#rcol(data.colors.error_container)#}*/
+  color: #93000a;
+}
+
+#temperature.critical {
+  /*{#rcol(data.colors.error)#}*/
+  color: #ffb4ab;
+}
+
+#battery.critical {
+  /*{#rcol(data.colors.error_container)#}*/
+  color: #93000a;
+  /*{#rcol(data.colors.on_error_container)#}*/
+  background: #ffdad6;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.charging,
+#battery.full,
+#power-profiles-daemon.performance,
+#privacy-item.screenshare,
+#bluetooth.disabled {
+  /*{#rcol(data.colors.tertiary_fixed)#}*/
+  color: #ffd7f1;
+}
+
+#power-profiles-daemon.power-saver,
+/*I mostly have my audio muted, yes I'm crazy :3*/
+#pulseaudio:not(.muted),
+#privacy-item.audio-out {
+  /*{#rcol(data.colors.secondary)#}*/
+  color: #c4c5dd;
+}

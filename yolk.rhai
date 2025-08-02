@@ -1,8 +1,21 @@
+import "colors" as colors;
+
+export let data = #{
+  colors: colors::colorschemes.weeb.dark,
+  font: "JetBrainsMono Nerd Font Propo",
+};
+
 export let eggs = #{
   hyfetch: #{
     targets: #{
       "hyfetch.json": "~/.config/hyfetch.json",
     },
     enabled: true,
+  },
+  waybar: #{
+    targets: "~/.config/waybar",
+    templates: ["config.jsonc","style.css"],
+    enabled: true,
   }
-}
+};
+
