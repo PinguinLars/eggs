@@ -21,6 +21,11 @@ export let eggs = #{
     targets: "~/.config/niri",
     templates: ["config.kdl"],
     enabled: true,
+  },
+  fastfetch: #{
+    targets: "~/.config/fastfetch",
+    templates: ["config.jsonc"],
+    enabled: true
   }
 };
 
