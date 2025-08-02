@@ -26,6 +26,11 @@ export let eggs = #{
     targets: "~/.config/fastfetch",
     templates: ["config.jsonc"],
     enabled: true
+  },
+  kitty: #{
+    targets: "~/.config/kitty",
+    templates: ["kitty.conf"],
+    enabled: true
   }
 };
 

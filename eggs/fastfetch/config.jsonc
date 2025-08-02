@@ -29,8 +29,6 @@
       }
     }
   },
-  "general": {
-  },
   "modules": [
     "title",
     "separator",
