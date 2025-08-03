@@ -1,23 +1,28 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["clock", "pulseaudio", "backlight", "privacy"],
+  "modules-left": [
+    "clock",
+    "pulseaudio",
+    "backlight",
+    "privacy"
+  ],
   "modules-center": [
     "niri/workspaces",
     //gives errors/warnings that you can ignore (or comment it out)
-    "hyprland/workspaces",
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "systemd-failed-units",
     "group/group-network",
     "group/group-power",
     "power-profiles-daemon",
-    "group/group-hardware",
+    "group/group-hardware"
   ],
   "clock": {
     "actions": {
       "on-click": "mode",
-      "on-click-right": "mode",
+      "on-click-right": "mode"
     },
     "calendar": {
       "format": {
@@ -30,35 +35,51 @@
         //{#rcol(data.colors.tertiary)#}
         "weekdays": "<span color='#e6bad7'><b>{}</b></span>",
         //{#rcol(data.colors.secondary)#}
-        "weeks": "<span color='#c4c5dd'><b>W{}</b></span>",
+        "weeks": "<span color='#c4c5dd'><b>W{}</b></span>"
       },
       "mode": "month",
       "mode-mon-col": 3,
       "on-scroll": 1,
-      "weeks-pos": "left",
+      "weeks-pos": "left"
     },
     //The L is needed
     "format": "󰥔 {:L%H:%M}",
     "local": "nl_NL.utf8",
     //Displays the clock tooltip in Dutch
     "tooltip-alt": "{:L%a %d %b %H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>"
   },
   "network": {
     "format-disabled": "󰰰",
     "format-disconnected": "󰤮",
     "format-ethernet": "󱎔",
-    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "format-linked": "󰤫",
     "format-wifi": "{icon}",
-    "tooltip": false,
+    "tooltip": false
   },
   "battery": {
     "adapter": "AC",
     "bat": "BAT0",
     "format": "{icon}",
-    //"format-icons": ["", "", "", "", ""],
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
     "format-critical": "󱉞 ",
     "format-low": "󱃍 ",
     "format-warning": "󱟥",
@@ -72,7 +93,7 @@
       "seventy": 70,
       "eighty": 80,
       "ninety": 90,
-      "hundred": 100,
+      "hundred": 100
     },
     "format-charging-critical": "󰢜",
     "format-charging-low": "󰂆",
@@ -85,6 +106,7 @@
     "format-charging-ninety": "󰂋",
     "format-charging-hundred": "󰂅",
     "format-full": "󰂅",
+    "tooltip-format": "{timeTo}\n{capacity}% full\n{power}w\n{health}% health"
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -93,13 +115,13 @@
     "format-icons": {
       "performance": "",
       "balanced": "",
-      "power-saver": "",
-    },
+      "power-saver": ""
+    }
   },
   "systemd-failed-units": {
     "hide-on-ok": true,
     "format": "{nr_failed}",
-    "format-ok": "✓",
+    "format-ok": "✓"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -110,9 +132,13 @@
       "phone-muted": "",
       "portable": "",
       "car": "",
-      "default": ["󰕿", "󰖀", "󰕾"],
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
-    "scroll-step": 1,
+    "scroll-step": 1
   },
   "privacy": {
     "icon-spacing": 8,
@@ -122,99 +148,120 @@
       {
         "type": "screenshare",
         "tooltip": true,
-        "tooltip-icon-size": 24,
+        "tooltip-icon-size": 24
       },
       {
         "type": "audio-out",
         "tooltip": true,
-        "tooltip-icon-size": 24,
+        "tooltip-icon-size": 24
       },
       {
         "type": "audio-in",
         "tooltip": true,
-        "tooltip-icon-size": 24,
-      },
+        "tooltip-icon-size": 24
+      }
     ],
     "ignore-monitor": true,
     "ignore": [
       {
         "type": "audio-in",
-        "name": "cava",
+        "name": "cava"
       },
       {
         "type": "audio-out",
-        "name": "obs",
-      },
-    ],
+        "name": "obs"
+      }
+    ]
   },
   "bluetooth": {
     "format-disabled": "󰂲",
     "format-connected": "󰂱",
-    "format-on": "󰂯",
+    "format-on": "󰂯"
   },
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟", "󰃠"],
+    "format-icons": [
+      "󰃚",
+      "󰃛",
+      "󰃜",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ]
   },
   "group/group-power": {
     "orientation": "inherit",
-    "modules": ["custom/lock", "custom/power", "custom/reboot"],
+    "modules": [
+      "custom/lock",
+      "custom/power",
+      "custom/reboot"
+    ],
     "drawer": {
       "transition-duration": 500,
-      "transition-left-to-right": false,
-    },
+      "transition-left-to-right": false
+    }
   },
   "custom/lock": {
     "format": "󰍁",
     "tooltip": false,
-    "on-click": "swaylock",
+    "on-click": "swaylock"
   },
   "custom/reboot": {
     "format": "󰜉",
     "tooltip": false,
-    "on-click": "shutdown -r 60",
+    "on-click": "systemctl reboot"
   },
   "custom/power": {
     "format": "󰤆",
     "tooltip": false,
-    "on-click": "shutdown 60",
+    "on-click": "systemctl poweroff"
   },
   "group/group-hardware": {
     "drawer": {
       "transition-duration": 500,
-      "transition-left-to-right": false,
+      "transition-left-to-right": false
     },
     "orientation": "inherit",
-    "modules": ["battery", "cpu", "memory", "disk", "temperature"],
+    "modules": [
+      "battery",
+      "cpu",
+      "memory",
+      "disk",
+      "temperature"
+    ]
   },
   "group/group-network": {
     "drawer": {
       "transition-duration": 500,
-      "transition-left-to-right": false,
+      "transition-left-to-right": false
     },
     "orientation": "inherit",
-    "modules": ["network", "bluetooth"],
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
   },
   "cpu": {
-    "format": " {usage}%",
+    "format": " {usage}%"
   },
   "memory": {
     "format": " {used:0.1f}+{swapUsed:0.1f}G",
-    "tooltip-format": "{used:0.1f}GiB used\n{swapUsed:0.1f}GiB swap used",
+    "tooltip-format": "{used:0.1f}GiB used\n{swapUsed:0.1f}GiB swap used"
   },
   "disk": {
-    "format": " {percentage_used}%",
+    "format": " {percentage_used}%"
   },
   "load": {
     "interval": 10,
-    "format": "{load5}",
+    "format": "{load5}"
   },
   "temperature": {
     "thermal-zone": 6,
     // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 80,
     "format-critical": "{temperatureC}°C ",
-    "format": "{temperatureC}°C ",
-  },
+    "format": "{temperatureC}°C "
+  }
 }
