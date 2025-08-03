@@ -36,6 +36,13 @@ export let eggs = #{
     targets: "~/.config/mako",
     templates: ["config"],
     enabled: true
+  },
+  starship: #{
+    targets: #{
+      "starship.toml": "~/.config/starship.toml",
+    },
+    templates: ["starship.toml"],
+    enabled: true,
   }
 };
 
