@@ -14,7 +14,7 @@ export let eggs = #{
   },
   waybar: #{
     targets: "~/.config/waybar",
-    templates: ["config.jsonc","style.css"],
+    templates: ["config.jsonc","style.css","shared.jsonc"],
     enabled: true,
   },
   niri: #{
@@ -43,6 +43,11 @@ export let eggs = #{
     },
     templates: ["starship.toml"],
     enabled: true,
-  }
+  },
+  hypr: #{
+    targets: "~/.config/hypr",
+    templates: ["*.conf"],
+    enabled: true
+  },
 };
 

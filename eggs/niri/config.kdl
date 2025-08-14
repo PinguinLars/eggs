@@ -43,6 +43,10 @@ output "eDP-1" {
   focus-at-startup
 }
 
+output "HDMI-A-1" {
+  position x=0 y=0
+}
+
 // Needed for x11 apps, like intellij and steam
 environment {
   DISPLAY ":0"
@@ -113,12 +117,16 @@ switch-events { lid-close { spawn "swaylock";}; }
 binds {
   Mod+Shift+Slash { show-hotkey-overlay ; }
   Mod+T { spawn "kitty"; }
+  Mod+Shift+T { spawn "kitty" "fish"; }
   Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
   XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
   XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "5%+"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "5%-"; }
+
   Mod+Q { close-window ; }
   Mod+Left { focus-column-left ; }
   Mod+Down { focus-window-down ; }

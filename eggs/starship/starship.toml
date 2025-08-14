@@ -2,12 +2,19 @@
 add_newline = true
 
 format = '''
-[](tertiary)$os[ ](bg:tertiary)$username[ ](bg:tertiary_fixed fg:tertiary)$directory[ ](bg:secondary fg:tertiary_fixed)$git_branch$git_commit$git_metrics$git_status$git_state[ ](bg:secondary_fixed fg:secondary)$kotlin$java$gradle[ ](bg:primary fg:secondary_fixed)$time[](bg:primary_fixed fg:primary)$cmd_duration$character
+[](tertiary)$os[ ](bg:tertiary)$username$sudo[ ](bg:tertiary_fixed fg:tertiary)$directory[ ](bg:secondary fg:tertiary_fixed)$git_branch$git_commit$git_metrics$git_status$git_state[ ](bg:secondary_fixed fg:secondary)$kotlin$java$gradle$cpp$c$python$nodejs$lua$rust[ ](bg:primary fg:secondary_fixed)$time[](bg:primary_fixed fg:primary)$cmd_duration$character
 '''
 palette = 'yolk'
+continuation_prompt = '[ ](fg:primary_fixed) '
 
 [package]
 disabled = true
+
+[sudo]
+disabled = false
+style = 'fg:on_tertiary bg:tertiary'
+symbol = '󱗒 '
+format = '[ $symbol]($style)'
 
 [username]
 style_user = 'fg:on_tertiary bg:tertiary'
@@ -64,7 +71,7 @@ version_format = 'v${major}.${minor}'
 format = '[$symbol $version ]($style)'
 
 [java]
-symbol = '󰬷'
+symbol = '󰛊'
 style = 'bg:secondary_fixed fg:on_secondary_fixed'
 version_format = 'v${major}'
 format = '[$symbol $version ]($style)'
@@ -75,10 +82,46 @@ style = 'bg:secondary_fixed fg:on_secondary_fixed'
 version_format = 'v${raw}'
 format = '[$symbol $version ]($style)'
 
+[python]
+symbol = '󰌠'
+style = 'bg:secondary_fixed fg:on_secondary_fixed'
+version_format = 'v${major}.${minor}'
+format = '[$symbol $version ]($style)'
+
+[cpp]
+symbol = ''
+style = 'bg:secondary_fixed fg:on_secondary_fixed'
+version_format = 'v${major}.${minor}'
+format = '[$symbol $name $version ]($style)'
+
+[c]
+symbol = ''
+style = 'bg:secondary_fixed fg:on_secondary_fixed'
+version_format = 'v${major}.${minor}'
+format = '[$symbol $name-$version ]($style)'
+
+[nodejs]
+symbol = ''
+style = 'bg:secondary_fixed fg:on_secondary_fixed'
+version_format = 'v${major}'
+format = '[$symbol $version ]($style)'
+
+[lua]
+symbol = '󰢱'
+style = 'bg:secondary_fixed fg:on_secondary_fixed'
+version_format = 'v${major}.${minor}'
+format = '[$symbol $version ]($style)'
+
+[rust]
+symbol = '󱘗'
+style = 'bg:secondary_fixed fg:on_secondary_fixed'
+version_format = 'v${major}.${minor}'
+format = '[$symbol $version ]($style)'
+
 [time]
 disabled = false
 style = 'bg:primary fg:on_primary'
-format = '[󰥔 $time]($style)'
+format = '[󰥔 $time ]($style)'
 time_format = '%H:%M'
 
 [character]
@@ -88,7 +131,6 @@ error_symbol = '[](fg:primary_fixed bg:error)[](fg:error)'
 vimcmd_symbol = '[](fg:primary_fixed bg:primary_fixed)[](fg:primary_fixed)'
 
 [cmd_duration]
-show_milliseconds = true
 style = 'bg:primary_fixed fg:on_primary_fixed'
 format = '[ 󱦟 $duration]($style)'
 

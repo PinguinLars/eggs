@@ -3,7 +3,13 @@
   /*{#rq(data.font)#}*/
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 13px;
+  transition: 0.5s;
   margin-top: 1px;
+}
+
+button {
+  box-shadow: none;
+  border: none;
 }
 
 /*noinspection CssInvalidHtmlTagReference,SpellCheckingInspection*/
@@ -35,6 +41,15 @@ window#waybar {
   color: #bbc3ff;
 }
 
+#workspaces button:hover {
+  /*{#rcol(data.colors.tertiary_container)#}*/
+  background: #5d3c54;
+  /*{#rcol(data.colors.tertiary)#}*/
+  color: #e6bad7;
+  box-shadow: none;
+  border: none;
+}
+
 #network,
 #clock,
 #power-profiles-daemon,
@@ -45,25 +60,55 @@ window#waybar {
 #backlight,
 #bluetooth,
 #custom-power,
+#custom-suspend,
 #custom-lock,
 #custom-reboot,
+#custom-quit,
 #cpu,
 #disk,
+#window,
+#taskbar,
 #load,
 #temperature,
+#user,
 #memory {
   padding: 0 10px;
   /*{#rcol(data.colors.primary)#}*/
   color: #bbc3ff;
   /*{#rcol(data.colors.background)#}*/
   background-color: #131318;
-  /*{#rcol(data.colors.on_background)#}*/
+  border-radius: 10px;
+}
+
+#power-profiles-daemon:hover,
+#systemd-failed-units:hover,
+#custom-power:hover,
+#custom-lock:hover,
+#custom-reboot:hover,
+#custom-quit:hover,
+#custom-suspend:hover,
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#backlight:hover {
+  padding: 0 10px;
+  /*{#rcol(data.colors.background)#}*/
+  color: #131318;
+  /*{#rcol(data.colors.primary)#}*/
+  background-color: #bbc3ff;
   border-radius: 10px;
 }
 
 #network.disconnected {
   /*{#rcol(data.colors.error)#}*/
   color: #ffb4ab;
+}
+
+#network.disconnected:hover {
+  /*{#rcol(data.colors.error)#}*/
+  background-color: #ffb4ab;
+  /*{#rcol(data.colors.background)#}*/
+  color: #131318;
 }
 
 #network.linked {
@@ -86,6 +131,13 @@ window#waybar {
   color: #ffb4ab;
 }
 
+#systemd-failed-units.degraded:hover {
+  /*{#rcol(data.colors.error)#}*/
+  background-color: #ffb4ab;
+  /*{#rcol(data.colors.background)#}*/
+  color: #131318;
+}
+
 #battery.low {
   /*{#rcol(data.colors.error_container)#}*/
   color: #93000a;
@@ -96,7 +148,7 @@ window#waybar {
   color: #ffb4ab;
 }
 
-#battery.critical {
+#battery:not(.charging).critical {
   /*{#rcol(data.colors.error_container)#}*/
   color: #93000a;
   /*{#rcol(data.colors.on_error_container)#}*/
@@ -117,10 +169,42 @@ window#waybar {
   color: #ffd7f1;
 }
 
+#power-profiles-daemon.performance:hover,
+#bluetooth.disabled:hover {
+  /*{#rcol(data.colors.background)#}*/
+  color: #131318;
+  /*{#rcol(data.colors.tertiary_fixed)#}*/
+  background-color: #ffd7f1;
+}
+
 #power-profiles-daemon.power-saver,
 /*I mostly have my audio muted, yes I'm crazy :3*/
 #pulseaudio:not(.muted),
 #privacy-item.audio-out {
   /*{#rcol(data.colors.secondary)#}*/
   color: #c4c5dd;
+}
+
+#power-profiles-daemon.power-saver:hover,
+#pulseaudio:not(.muted):hover {
+  /*{#rcol(data.colors.background)#}*/
+  color: #131318;
+  /*{#rcol(data.colors.secondary)#}*/
+  background-color: #c4c5dd;
+}
+
+#taskbar button.active {
+  /*{#rcol(data.colors.primary_container)#}*/
+  background-color: #3a4379;
+  /*{#rcol(data.colors.primary)#}*/
+  color: #bbc3ff;
+}
+
+#taskbar button:hover {
+  /*{#rcol(data.colors.tertiary_container)#}*/
+  background: #5d3c54;
+  /*{#rcol(data.colors.tertiary)#}*/
+  color: #e6bad7;
+  box-shadow: none;
+  border: none;
 }
