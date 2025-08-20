@@ -3,10 +3,10 @@
   "display": {
     "separator": ": ",
     "color": {
-      //{#rcol(data.colors.tertiary_fixed)#}
-      "title": "#ffd7f1",
-      //{#rcol(data.colors.primary)#}
-      "keys": "#bbc3ff"
+      //{#rcol(data.color.rosepine.rose)#}
+      "title": "#ebbcba",
+      //{#rcol(data.color.rosepine.iris)#}
+      "keys": "#c4a7e7"
     },
     "key": {
       "width": 30,
@@ -20,12 +20,12 @@
     "percent": {
       "type": 9,
       "color": {
-        //{#rcol(data.colors.primary_fixed)#}
-        "green": "#dee0ff",
-        //{#rcol(data.colors.tertiary)#}
-        "yellow": "#e6bad7",
-        //{#rcol(data.colors.error)#}
-        "red": "#ffb4ab"
+        //{#rcol(data.color.rosepine.foam)#}
+        "green": "#9ccfd8",
+        //{#rcol(data.color.rosepine.gold)#}
+        "yellow": "#f6c177",
+        //{#rcol(data.color.rosepine.love)#}
+        "red": "#eb6f92"
       }
     }
   },
@@ -50,6 +50,9 @@
     "disk",
     "wifi",
     "battery",
-    "locale"
+    "locale",
+    "break",
+    "colors"
+
   ]
 }

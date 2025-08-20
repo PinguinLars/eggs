@@ -11,13 +11,17 @@ input {
     tap-button-map "left-right-middle"
   }
 
-  mouse { }
+  mouse {
+    accel-speed 0.5
+    accel-profile "flat"
+  }
   trackpoint { }
   warp-mouse-to-focus mode="center-xy-always"
   disable-power-key-handling
 }
 
 cursor {
+    xcursor-theme "BreezeX-RosePine-Linux"
     hide-after-inactive-ms 5000
 }
 
@@ -66,26 +70,25 @@ layout {
 
   focus-ring {
     width 4
-    //{#rcol(data.colors.primary)#}
-    active-color "#bbc3ff"
-    //{#rcol(data.colors.primary_fixed)#}
-    inactive-color "#dee0ff"
+    //{#rcol(data.colors.focused)#}
+    active-color "#9ccfd8"
+    //{#rcol(data.colors.unfocused)#}
+    inactive-color "#6e6a86"
   }
 
   border {
     off
     width 4
-    //{#rcol(data.colors.primary)#}
-    active-color "#bbc3ff"
-    //{#rcol(data.colors.primary_fixed)#}
-    inactive-color "#dee0ff"
+    //{#rcol(data.colors.focused)#}
+    active-color "#9ccfd8"
+    //{#rcol(data.colors.unfocused)#}
+    inactive-color "#6e6a86"
   }
 
   shadow {
     softness 30
     spread 5
     offset x=0 y=5
-    //{#rcol(data.colors.shadow)#}
     color "#000000"
   }
 

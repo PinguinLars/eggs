@@ -1,8 +1,9 @@
 import "colors" as colors;
 
 export let data = #{
-  colors: colors::colorschemes.weeb.dark,
+  colors: colors::colorschemes.rosepine,
   font: "JetBrainsMono Nerd Font Propo",
+  color: colors::colorschemes,
 };
 
 export let eggs = #{
@@ -49,5 +50,15 @@ export let eggs = #{
     templates: ["*.conf"],
     enabled: true
   },
+  swaylock: #{
+    targets: "~/.config/swaylock",
+    templates: ["config"],
+    enabled: true
+  },
+//  eww: #{
+//    targets: "~/.config/eww",
+//    templates: ["*.scss", "*.yuck"],
+//    enabled: true,
+//  },
 };
 

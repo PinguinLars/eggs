@@ -12,7 +12,7 @@
       //gives errors/warnings that you can ignore (or comment it out)
       "hyprland/workspaces",
       "clock",
-      "privacy",
+      "privacy"
     ],
     "modules-center": [
       "group/window"
@@ -24,37 +24,37 @@
       "group/group-network",
       "group/group-power",
       "power-profiles-daemon",
-      "group/group-hardware",
+      "group/group-hardware"
     ],
     "clock": {
       "actions": {
         "on-click": "mode",
-        "on-click-right": "mode",
+        "on-click-right": "mode"
       },
       "calendar": {
         "format": {
-          //{#rcol(data.colors.primary_fixed)#}
-          "days": "<span color='#dee0ff'><b>{}</b></span>",
-          //{#rcol(data.colors.tertiary_fixed)#}
-          "months": "<span color='#ffd7f1'><b>{}</b></span>",
-          //{#rcol(data.colors.primary)#}
-          "today": "<span color='#bbc3ff'><b><u>{}</u></b></span>",
-          //{#rcol(data.colors.tertiary)#}
-          "weekdays": "<span color='#e6bad7'><b>{}</b></span>",
-          //{#rcol(data.colors.secondary)#}
-          "weeks": "<span color='#c4c5dd'><b>W{}</b></span>",
+          //{#rcol(data.colors.calendar_days)#}
+          "days": "<span color='#31748f'><b>{}</b></span>",
+          //{#rcol(data.colors.calendar_months)#}
+          "months": "<span color='#eb6f92'><b>{}</b></span>",
+          //{#rcol(data.colors.calendar_today)#}
+          "today": "<span color='#9ccfd8'><b><u>{}</u></b></span>",
+          //{#rcol(data.colors.calendar_weekdays)#}
+          "weekdays": "<span color='#ebbcba'><b>{}</b></span>",
+          //{#rcol(data.colors.calendar_weeks)#}
+          "weeks": "<span color='#c4a7e7'><b>W{}</b></span>"
         },
         "mode": "month",
         "mode-mon-col": 3,
         "on-scroll": 1,
-        "weeks-pos": "left",
+        "weeks-pos": "left"
       },
       //The L is needed
       "format": "󰅐 {:L%H:%M}",
       "local": "nl_NL.utf8",
       //Displays the clock tooltip in Dutch
       "tooltip-alt": "{:L%a %d %b %H:%M}",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>"
     },
     "network": {
       "format-disabled": "󰰰",
@@ -73,7 +73,7 @@
       "tooltip-format": "{ifname} via {gwaddr} 󰊗",
       "tooltip-format-wifi": "{essid} ({signalStrength}%)",
       "tooltip-format-ethernet": "{ifname} ",
-      "tooltip-format-disconnected": "Disconnected",
+      "tooltip-format-disconnected": "Disconnected"
     },
     "battery": {
       "adapter": "AC",
@@ -104,7 +104,7 @@
         "seventy": 70,
         "eighty": 80,
         "ninety": 90,
-        "hundred": 100,
+        "hundred": 100
       },
       "format-charging-critical": "󰢜",
       "format-charging-low": "󰂆",
@@ -117,7 +117,7 @@
       "format-charging-ninety": "󰂋",
       "format-charging-hundred": "󰂅",
       "format-full": "󰂅",
-      "tooltip-format": "{timeTo}\n{capacity}% full\n{power}w\n{health}% health",
+      "tooltip-format": "{timeTo}\n{capacity}% full\n{power}w\n{health}% health"
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -126,13 +126,13 @@
       "format-icons": {
         "performance": "",
         "balanced": "",
-        "power-saver": "",
-      },
+        "power-saver": ""
+      }
     },
     "systemd-failed-units": {
       "hide-on-ok": false,
       "format": "{nr_failed}",
-      "format-ok": "✓",
+      "format-ok": "✓"
     },
     "pulseaudio": {
       "format": "{icon} {volume}%",
@@ -147,16 +147,16 @@
           "󰕿",
           "󰖀",
           "󰕾"
-        ],
+        ]
       },
       "scroll-step": 1,
       "tooltip-format": "Volume at {volume}%\n{desc}",
-      "on-click": "amixer set Master toggle",
+      "on-click": "amixer set Master toggle"
     },
     "bluetooth": {
       "format-disabled": "󰂲",
       "format-connected": "󰂱",
-      "format-on": "󰂯",
+      "format-on": "󰂯"
       //TODO: added tooltip
     },
     "backlight": {
@@ -172,7 +172,7 @@
         "󰃟",
         "󰃠"
       ],
-      "tooltip": true,
+      "tooltip": true
     },
     "group/group-power": {
       "orientation": "inherit",
@@ -181,47 +181,47 @@
         "custom/power",
         "custom/reboot",
         "custom/quit",
-        "custom/suspend",
+        "custom/suspend"
       ],
       "drawer": {
         "transition-duration": 500,
-        "transition-left-to-right": false,
-      },
+        "transition-left-to-right": false
+      }
     },
     "custom/lock": {
       "format": "󰍁",
       "tooltip": true,
       "on-click": "swaylock",
-      "tooltip-format": "Lock current session",
+      "tooltip-format": "Lock current session"
     },
     "custom/suspend": {
       "format": "󱤴",
       "tooltip": true,
       "on-click": "systemctl suspend",
-      "tooltip-format": "Suspend session (to ram)",
+      "tooltip-format": "Suspend session (to ram)"
     },
     "custom/quit": {
       "format": "󰗼",
       "tooltip": true,
       "tooltip-format": "Quit session",
-      "on-click": "niri msg action quit",
+      "on-click": "niri msg action quit"
     },
     "custom/reboot": {
       "format": "󰜉",
       "tooltip": true,
       "on-click": "systemctl reboot",
-      "tooltip-format": "Reboot system",
+      "tooltip-format": "Reboot system"
     },
     "custom/power": {
       "format": "󰤆",
       "tooltip": true,
       "on-click": "systemctl poweroff",
-      "tooltip-format": "Poweroff system",
+      "tooltip-format": "Poweroff system"
     },
     "group/group-hardware": {
       "drawer": {
         "transition-duration": 1000,
-        "transition-left-to-right": false,
+        "transition-left-to-right": false
       },
       "orientation": "inherit",
       "modules": [
@@ -231,60 +231,62 @@
         "memory",
         "disk",
         "temperature"
-      ],
+      ]
     },
     "group/group-network": {
       "drawer": {
         "transition-duration": 400,
-        "transition-left-to-right": false,
+        "transition-left-to-right": false
       },
       "orientation": "inherit",
       "modules": [
         "network",
         "bluetooth"
-      ],
+      ]
     },
     "user": {
       "format": " {work_H}h",
-      "open-on-click": false,
+      "open-on-click": false
     },
     "cpu": {
-      "format": " {usage}%",
+      "format": " {usage}%"
     },
     "memory": {
       "format": " {used:0.1f}+{swapUsed:0.1f}G",
-      "tooltip-format": "{used:0.1f}GiB used\n{swapUsed:0.1f}GiB swap used",
+      "tooltip-format": "{used:0.1f}GiB used\n{swapUsed:0.1f}GiB swap used"
     },
     "disk": {
-      "format": " {percentage_used}%",
+      "format": " {percentage_used}%"
     },
     "load": {
       "interval": 10,
-      "format": "{load5}",
+      "format": "{load5}"
     },
     "temperature": {
       "thermal-zone": 6,
       // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
       "critical-threshold": 80,
       "format-critical": " {temperatureC}°C",
-      "format": " {temperatureC}°C",
+      "format": " {temperatureC}°C"
     },
     "group/window": {
       "drawer": {
         "transition-duration": 500,
-        "transition-left-to-right": true,
+        "transition-left-to-right": true
       },
       "orientation": "inherit",
       "modules": [
         "niri/window",
         "wlr/taskbar"
-      ],
+      ]
     },
     "niri/window": {
       "rewrite": {
-        "(.*) - Mozilla Firefox": "󰈹 $1",
-      },
+        "(.*) - Mozilla Firefox": "󰈹 $1"
+      }
     },
+//    "custom": {
+//    }
   },
   {
     "name": "taskbar",
@@ -298,11 +300,11 @@
       "niri/workspaces",
       //gives errors/warnings that you can ignore (or comment it out)
       "hyprland/workspaces",
-      "privacy",
+      "privacy"
     ],
     "modules-center": [],
     "modules-right": [
       "wlr/taskbar"
-    ],
-  },
+    ]
+  }
 ]
