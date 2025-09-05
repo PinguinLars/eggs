@@ -22,7 +22,7 @@ $scala\
 $conda\
 $python\
 $time\n  \
-[󱞪](fg:iris) \
+$character\
 """
 
 palette = "rose-pine"
@@ -35,6 +35,10 @@ rose = '#ebbcba'
 pine = '#31748f'
 foam = '#9ccfd8'
 iris = '#c4a7e7'
+
+[character]
+success_symbol = '[󱞪](fg:iris)'
+error_symbol = '[󱞪](fg:love)'
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "

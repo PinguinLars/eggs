@@ -284,9 +284,7 @@
       "rewrite": {
         "(.*) - Mozilla Firefox": "󰈹 $1"
       }
-    },
-//    "custom": {
-//    }
+    }
   },
   {
     "name": "taskbar",

@@ -1,6 +1,6 @@
 export const colorschemes = #{
   rosepine: #{
-    foreground: "",
+    foreground: "#e0def4",
     background: "#191724",
     text: "#e0def4",
     focused: "#9ccfd8",
@@ -46,6 +46,8 @@ export const colorschemes = #{
     term_color7: "#e0def4",
     term_color15:"#e0def4",
     link:"#c4a7e7",
+    title: "#ebbcba",
+    key: "#c4a7e7",
 
     base: "#191724",
     surface: "#1f1d2e",
@@ -108,5 +110,7 @@ export const colorschemes = #{
     term_color14:"",
     term_color15:"",
     link:"",
-  }
+    title: "",
+    key: "",
+    }
 };

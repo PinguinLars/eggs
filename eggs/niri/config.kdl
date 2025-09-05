@@ -120,7 +120,7 @@ switch-events { lid-close { spawn "swaylock";}; }
 binds {
   Mod+Shift+Slash { show-hotkey-overlay ; }
   Mod+T { spawn "kitty"; }
-  Mod+Shift+T { spawn "kitty" "fish"; }
+  Mod+Shift+T { spawn "kitty" "zsh"; }
   Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }

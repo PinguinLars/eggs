@@ -3,9 +3,9 @@
   "display": {
     "separator": ": ",
     "color": {
-      //{#rcol(data.color.rosepine.rose)#}
+      //{#rcol(data.colors.title)#}
       "title": "#ebbcba",
-      //{#rcol(data.color.rosepine.iris)#}
+      //{#rcol(data.colors.key)#}
       "keys": "#c4a7e7"
     },
     "key": {
@@ -16,17 +16,6 @@
       "width": 10,
       "charElapsed": "■",
       "charTotal": "-"
-    },
-    "percent": {
-      "type": 9,
-      "color": {
-        //{#rcol(data.color.rosepine.foam)#}
-        "green": "#9ccfd8",
-        //{#rcol(data.color.rosepine.gold)#}
-        "yellow": "#f6c177",
-        //{#rcol(data.color.rosepine.love)#}
-        "red": "#eb6f92"
-      }
     }
   },
   "modules": [
@@ -53,6 +42,5 @@
     "locale",
     "break",
     "colors"
-
   ]
 }

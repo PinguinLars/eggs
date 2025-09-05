@@ -1,0 +1,5 @@
+# Credits
+## KAITO-thighs.png 
+[Osu springtime showdown 2025](https://osu.ppy.sh/home/news/2025-04-01-springtime-showdown-art-contest-results)
+[Osu profile](https://osu.ppy.sh/users/13103233)
+
