@@ -1,5 +1,4 @@
-"$schema" = 'https://starship.rs/config-schema.json'
-
+"$schema" = "https://starship.rs/config-schema.json"
 format = """
 $username\
 $directory\
@@ -24,21 +23,20 @@ $python\
 $time\n  \
 $character\
 """
-
 palette = "rose-pine"
 
 [palettes.rose-pine]
-overlay = '#26233a'
-love = '#eb6f92'
-gold = '#f6c177'
-rose = '#ebbcba'
-pine = '#31748f'
-foam = '#9ccfd8'
-iris = '#c4a7e7'
+overlay = "#26233a"
+love = "#eb6f92"
+gold = "#f6c177"
+rose = "#ebbcba"
+pine = "#31748f"
+foam = "#9ccfd8"
+iris = "#c4a7e7"
 
 [character]
-success_symbol = '[󱞪](fg:iris)'
-error_symbol = '[󱞪](fg:love)'
+success_symbol = "[󱞪](fg:iris)"
+error_symbol = "[󱞪](fg:love)"
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
@@ -59,8 +57,8 @@ symbol = ""
 [git_status]
 disabled = false
 style = "bg:overlay fg:love"
-format = '[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) '
-up_to_date = '[ ✓ ](bg:overlay fg:iris)'
+format = "[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) "
+up_to_date = "[ ✓ ](bg:overlay fg:iris)"
 untracked = '[?\($count\)](bg:overlay fg:gold)'
 stashed = '[\$](bg:overlay fg:iris)'
 modified = '[!\($count\)](bg:overlay fg:gold)'
@@ -75,7 +73,7 @@ behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
 disabled = false
 format = " [](fg:overlay)[ $time 󰴈 ]($style)[](fg:overlay)"
 style = "bg:overlay fg:rose"
-time_format = '%H:%M'
+time_format = "%H:%M"
 
 [username]
 disabled = false
@@ -83,6 +81,7 @@ format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay) "
 show_always = true
 style_root = "bg:overlay fg:iris"
 style_user = "bg:overlay fg:iris"
+aliases = { lars = "ashley" } # {< if !school_mode>}
 
 # Languages
 
@@ -156,22 +155,23 @@ symbol = " "
 style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
-symbol = ' '
+symbol = " "
 
 [conda]
 style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
 disabled = false
-symbol = '🅒 '
+symbol = "🅒 "
 
 [kotlin]
 style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
-symbol = '󱈙 '
+symbol = "󱈙 "
 
 [gradle]
 style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
-symbol = ' '
+symbol = " "
+

@@ -19,7 +19,8 @@
     }
   },
   "modules": [
-    "title",
+    // {#fetch_title()#}
+    {"type": "title","format": "{#bold_#ebbcba}ashley{#}@{#bold_#ebbcba}{host-name}"},
     "separator",
     "os",
     "host",

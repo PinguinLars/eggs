@@ -1,5 +1,7 @@
 # Background color
 color=#191724
+#{#rv(data.assets_path + data.wallpaper)#}
+image=~/.config/yolk/assets/KAITO-thighs.png
 
 # Layout text colors
 layout-bg-color=#00000000

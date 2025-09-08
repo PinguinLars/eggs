@@ -25,12 +25,6 @@ cursor {
     hide-after-inactive-ms 5000
 }
 
-gestures {
-  hot-corners {
-    off
-  }
-}
-
 spawn-at-startup "swaylock" //Starts background app at device startup with autologin (which I have)
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "/usr/lib/xdg-desktop-portal"
@@ -114,6 +108,12 @@ layer-rule {
   match namespace="^wallpaper$"
   place-within-backdrop true
 }
+
+layer-rule {
+  match namespace="wpaperd"
+  place-within-backdrop true
+}
+
 
 switch-events { lid-close { spawn "swaylock";}; }
 
