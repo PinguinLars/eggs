@@ -1,0 +1,9 @@
+[Unit]
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+#{#rq("%h/.config/yolk/assets/" + data.wallpaper)#}
+ExecStart=/usr/bin/swaybg -m fill -i "%h/.config/yolk/assets/KAITO-thighs.png"
+Restart=on-failure
