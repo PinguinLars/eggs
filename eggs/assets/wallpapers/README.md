@@ -11,7 +11,16 @@ Wallpapers made by her:
 - osu15y.png
 - picnic.png
 
+## Minecraft
+- pet\_party.png
+
 ## weeb.png
 
 Got it from [here](https://github.com/KatieUmbra/Dotfiles/blob/main/eggs/assets/wallpaper/rosepine/moon/weeb.png).
 I can't find the artist
+
+## plain.png
+
+Got it from [here](https://github.com/KatieUmbra/Dotfiles/blob/main/eggs/assets/wallpaper/catppuccin/mocha/plain.png).
+I can't find the artist
+
