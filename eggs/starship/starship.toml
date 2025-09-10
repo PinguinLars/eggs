@@ -81,7 +81,7 @@ format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay) "
 show_always = true
 style_root = "bg:overlay fg:iris"
 style_user = "bg:overlay fg:iris"
-aliases = { lars = "ashley" } # {< if !school_mode>}
+#<yolk> aliases = { lars = "ashley" } # {< if !school_mode>}
 
 # Languages
 

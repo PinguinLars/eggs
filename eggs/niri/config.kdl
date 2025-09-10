@@ -8,11 +8,12 @@ input {
   touchpad {
     tap
     natural-scroll
+    dwt
     tap-button-map "left-right-middle"
   }
 
   mouse {
-    accel-speed 0.5
+    //accel-speed 0.5
     accel-profile "flat"
   }
   trackpoint { }
@@ -123,13 +124,14 @@ binds {
   Mod+Shift+T { spawn "kitty" "zsh"; }
   Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
+  // Mod+Alt+R { spawn-sh "~/.config/share/scripts/reload.sh"; }
+  Mod+E { spawn-sh "~/.config/share/scripts/reload.sh"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
   XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-  XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "5%+"; }
+  XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; } 
+  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "5%+"; } 
   XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "5%-"; }
-
   Mod+Q { close-window ; }
   Mod+Left { focus-column-left ; }
   Mod+Down { focus-window-down ; }

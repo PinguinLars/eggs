@@ -1,13 +1,14 @@
 import "colors" as colors;
 
-export let school_mode = false;
+export let school_mode = true;
 
 export let data = #{
   colors: colors::colorschemes.rosepine,
   font: "JetBrainsMono Nerd Font Propo",
   color: colors::colorschemes,
-  assets_path: "~/.config/yolk/assets/",
-  wallpaper: if school_mode {"weeb.png"} else {"KAITO-thighs.png"},
+  assets_path: ".config/share/",
+  wallpaper: "picnic.png",
+  wallpaper_school: "weeb.png",
 };
 
 export let eggs = #{
@@ -77,6 +78,10 @@ export let eggs = #{
     targets: "~/.config/lsd",
     templates: ["*.yml"],
     enabled: true
+  },
+  assets: #{
+    targets: "~/.config/share",
+    enabled: true,
   }
 };
 
@@ -85,5 +90,13 @@ fn fetch_title() {
     return "    {\"type\": \"title\",\"format\": \"{#bold_#ebbcba}ashley{#}@{#bold_#ebbcba}{host-name}\"},";
   } else {
     return "    \"title\",";
+  }
+}
+
+fn get_wallpaper_path(home) {
+  if school_mode {
+    return home + "/" + data.assets_path + "wallpapers/" + data.wallpaper_school;
+  } else {
+    return home + "/" + data.assets_path + "wallpapers/" + data.wallpaper;
   }
 }

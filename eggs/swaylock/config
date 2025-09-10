@@ -1,7 +1,7 @@
 # Background color
 color=#191724
-#{#rv(data.assets_path + data.wallpaper)#}
-image=~/.config/yolk/assets/KAITO-thighs.png
+#{#rv(get_wallpaper_path("~"))#}
+image=~/.config/share/wallpapers/weeb.png
 
 # Layout text colors
 layout-bg-color=#00000000
