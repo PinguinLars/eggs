@@ -279,11 +279,6 @@
         "niri/window",
         "wlr/taskbar"
       ]
-    },
-    "niri/window": {
-      "rewrite": {
-        "(.*) - Mozilla Firefox": "󰈹 $1"
-      }
     }
   },
   {

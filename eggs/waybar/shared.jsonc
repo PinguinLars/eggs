@@ -38,5 +38,13 @@
         "name": "obs"
       }
     ]
+  },
+  "niri/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "browser": "󰈹",
+      "dev": "󰘦",
+      "games": "󰺷"
+    }
   }
 }

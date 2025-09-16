@@ -35,7 +35,7 @@ window#waybar {
 }
 
 #workspaces button.focused {
-  /*{#rcol(data.colors.waybar_normal)#}*/
+  /*{#rcol(data.colors.normal)#}*/
   color: #9ccfd8;
 }
 
@@ -71,7 +71,7 @@ window#waybar {
 #user,
 #memory {
   padding: 0 10px;
-  /*{#rcol(data.colors.waybar_normal)#}*/
+  /*{#rcol(data.colors.normal)#}*/
   color: #9ccfd8;
   /*{#rcol(data.colors.background)#}*/
   background-color: #191724;
@@ -92,7 +92,7 @@ window#waybar {
   padding: 0 10px;
   /*{#rcol(data.colors.background)#}*/
   color: #191724;
-  /*{#rcol(data.colors.waybar_normal)#}*/
+  /*{#rcol(data.colors.normal)#}*/
   background-color: #9ccfd8;
   border-radius: 10px;
 }
@@ -149,10 +149,14 @@ window#waybar {
 #battery.charging,
 #battery.full,
 #power-profiles-daemon.performance,
-#privacy-item.screenshare,
 #bluetooth.disabled {
   /*{#rcol(data.colors.high)#}*/
   color: #c4a7e7;
+}
+
+#privacy-item.screenshare {
+  /*{#rcol(data.colors.screen_cast)#}*/
+  color: #eb6f92;
 }
 
 #power-profiles-daemon.performance:hover,

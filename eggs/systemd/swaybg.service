@@ -5,5 +5,5 @@ Requisite=graphical-session.target
 
 [Service]
 #{#rq(get_wallpaper_path("%h"))#}
-ExecStart=/usr/bin/swaybg -m fill -i "%h/.config/share/wallpapers/weeb.png"
+ExecStart=/usr/bin/swaybg -m fill -i "%h/.config/share/wallpapers/picnic.png"
 Restart=on-failure

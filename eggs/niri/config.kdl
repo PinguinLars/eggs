@@ -1,3 +1,7 @@
+workspace "browser"
+workspace "dev"
+workspace "games"
+
 input {
   keyboard {
     xkb {
@@ -8,7 +12,7 @@ input {
   touchpad {
     tap
     natural-scroll
-    dwt
+    // dwt
     tap-button-map "left-right-middle"
   }
 
@@ -92,7 +96,8 @@ layout {
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-animations { }
+animations {
+}
 
 window-rule {
   match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -105,6 +110,61 @@ window-rule {
   draw-border-with-background false
 }
 
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+      off
+    }
+
+    border {
+      on
+      width 4
+      //{#rcol(data.colors.screen_cast)#}
+      active-color "#eb6f92"
+      //{#rcol(data.colors.screen_cast_unfocused)#}
+      inactive-color "#ebbcba"
+    }
+}
+
+window-rule {
+  match app-id=r#"org.mozilla.firefox"#
+  open-on-workspace "browser"
+}
+
+window-rule {
+  match app-id=r#"vesktop"#
+  open-on-workspace "browser"
+  block-out-from "screen-capture"
+}
+
+window-rule {
+  match app-id=r#"jetbrains"#
+  open-on-workspace "dev"
+}
+
+window-rule {
+  match app-id=r#"kitty"#
+  open-on-workspace "dev"
+}
+
+window-rule {
+  match app-id=r#"osu!"#
+  open-on-workspace "games"
+  open-maximized true
+  open-fullscreen false
+}
+
+window-rule {
+  match app-id=r#"modrinth-app-wrapped"#
+  open-on-workspace "games"
+}
+
+window-rule {
+  match app-id=r#"[Mm]inecraft"#
+  open-on-workspace "games"
+}
+
 layer-rule {
   match namespace="^wallpaper$"
   place-within-backdrop true
@@ -115,6 +175,11 @@ layer-rule {
   place-within-backdrop true
 }
 
+layer-rule {
+    match namespace="^notifications$"
+
+    block-out-from "screencast"
+}
 
 switch-events { lid-close { spawn "swaylock";}; }
 
@@ -124,7 +189,6 @@ binds {
   Mod+Shift+T { spawn "kitty" "zsh"; }
   Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
-  // Mod+Alt+R { spawn-sh "~/.config/share/scripts/reload.sh"; }
   Mod+E { spawn-sh "~/.config/share/scripts/reload.sh"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }

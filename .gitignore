@@ -3,3 +3,5 @@
 /.deployed_cache
 /.yolk_git
 **todo**
+!/.gitignore
+**ignore**
