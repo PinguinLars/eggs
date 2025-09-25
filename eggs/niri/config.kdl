@@ -5,7 +5,8 @@ workspace "games"
 input {
   keyboard {
     xkb {
-      options "caps:swapescape"
+      options "caps:swapescape,compose:ralt"
+      model "latitude"
     }
   }
 
@@ -70,18 +71,18 @@ layout {
   focus-ring {
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#bbc3ff"
+    active-color "#ffb3ae"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#46464f"
+    inactive-color "#534342"
   }
 
   border {
     off
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#bbc3ff"
+    active-color "#ffb3ae"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#46464f"
+    inactive-color "#534342"
   }
 
   shadow {
@@ -123,7 +124,7 @@ window-rule {
       //{#rcol(data.colors.screen_cast)#}
       active-color "#ffb4ab"
       //{#rcol(data.colors.screen_cast_unfocused)#}
-      inactive-color "#bbc3ff"
+      inactive-color "#ffb3ae"
     }
 }
 

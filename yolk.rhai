@@ -1,8 +1,9 @@
 import "colors" as colors;
 import "dynamic" as dynamic;
 
-let school_mode = true;
+let school_mode = false;
 let dynamic_colors = true;
+let dark_mode = true;
 let font = "JetBrainsMono Nerd Font Propo";
 let colorscheme = colors::colorschemes.rosepine;
 /*
@@ -10,14 +11,16 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
-    normal: "picnic.png",
+    normal: "lockedin.png",
     school: "weeb.png",
 };
 
 export let data = #{
     dynamic_colors: dynamic_colors,
-    colors: if dynamic_colors {
+    colors: if dynamic_colors && dark_mode {
         dynamic::dark
+    } else if dynamic_colors && !dark_mode {
+        dynamic::light
     } else {
         colorscheme
     },

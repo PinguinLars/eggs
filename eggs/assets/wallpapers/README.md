@@ -13,6 +13,7 @@ Wallpapers made by her:
 
 ## Minecraft
 - pet\_party.png
+- mc\_pride.png
 
 ## weeb.png
 
