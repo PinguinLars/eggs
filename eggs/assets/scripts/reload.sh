@@ -1,4 +1,4 @@
 yolk sync || notify-send "dotfiles" "Error reloading!"
-systemctl --user daemon-reload && systemctl --user restart swaybg.service
+swww img $HOME$(yolk eval 'get_wallpaper_path("")')
 makoctl reload
 pkill -12 waybar

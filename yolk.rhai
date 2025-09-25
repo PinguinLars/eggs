@@ -1,11 +1,14 @@
 import "colors" as colors;
 import "dynamic" as dynamic;
 
-let school_mode = false;
-// %ashy_dynamic%
-let dynamic_colors = false;
+let school_mode = true;
+let dynamic_colors = true;
 let font = "JetBrainsMono Nerd Font Propo";
 let colorscheme = colors::colorschemes.rosepine;
+/*
+ * wallpapers (path relative to $YOLK/eggs/assets/wallpapers
+ * //changes after sync to ~/.config/share/wallpapers)
+ */
 let wallpaper = #{
     normal: "picnic.png",
     school: "weeb.png",
@@ -13,7 +16,11 @@ let wallpaper = #{
 
 export let data = #{
     dynamic_colors: dynamic_colors,
-    colors: colors::colorschemes.rosepine,
+    colors: if dynamic_colors {
+        dynamic::dark
+    } else {
+        colorscheme
+    },
     font: font,
     assets_path: ".config/share/",
     test: if dynamic_colors {
@@ -21,10 +28,6 @@ export let data = #{
     } else {
         colors::colorschemes.rosepine
     },
-    /*
-     * wallpapers (path relative to $YOLK/eggs/assets/wallpapers
-     * //changes after sync to ~/.config/share/wallpapers)
-     */
     wallpaper: wallpaper.normal,
     wallpaper_school: wallpaper.school,
     school_mode: school_mode,
@@ -106,7 +109,7 @@ export let eggs = #{
 
 fn fetch_title() {
     if !data.school_mode {
-        return "    {\"type\": \"title\",\"format\": \"{#bold_#ebbcba}ashley{#}@{#bold_#ebbcba}{host-name}\"},";
+        return "    {\"type\": \"title\",\"format\": \"{#bold_"+data.colors.title+"}ashley{#}@{#bold_"+data.colors.title+"}{host-name}\"},";
     } else {
         return "    \"title\",";
     }
