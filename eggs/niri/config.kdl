@@ -1,19 +1,28 @@
-workspace "browser"
-workspace "dev"
-workspace "games"
+workspace "browser" {
+  open-on-output "eDP-1"
+}
+workspace "dev" {
+  open-on-output "eDP-1" 
+}
+workspace "games" { 
+  open-on-output "eDP-1" 
+}
 
 input {
   keyboard {
     xkb {
-      options "caps:swapescape,compose:ralt"
-      model "latitude"
+      // {% if data.school_mode %}
+      options "compose:caps,mod_led:compose"
+      // {% else %}
+      //<yolk> options "caps:escape,compose:ralt"
+      // {% end %}
     }
   }
 
   touchpad {
     tap
     natural-scroll
-    // dwt
+    // dwt //{< if data.school_mode >}
     tap-button-map "left-right-middle"
   }
 
@@ -39,6 +48,7 @@ spawn-at-startup "/usr/bin/xwayland-satellite"
 //spawn-at-startup "bash" "-c" "swaybg -i home/lars/background/weeb.png &" //done with systemd service
 spawn-at-startup "/usr/bin/swww-daemon"
 spawn-at-startup "/usr/bin/waybar"
+spawn-at-startup "bash" "-c" "alacritty --daemon"
 
 prefer-no-csd
 
@@ -49,11 +59,6 @@ output "eDP-1" {
 
 output "HDMI-A-1" {
   position x=0 y=0
-}
-
-// Needed for x11 apps, like intellij and steam
-environment {
-  DISPLAY ":0"
 }
 
 layout {
@@ -71,18 +76,18 @@ layout {
   focus-ring {
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#ffb3ae"
+    active-color "#b1c5ff"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#534342"
+    inactive-color "#44464f"
   }
 
   border {
     off
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#ffb3ae"
+    active-color "#b1c5ff"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#534342"
+    inactive-color "#44464f"
   }
 
   shadow {
@@ -124,7 +129,7 @@ window-rule {
       //{#rcol(data.colors.screen_cast)#}
       active-color "#ffb4ab"
       //{#rcol(data.colors.screen_cast_unfocused)#}
-      inactive-color "#ffb3ae"
+      inactive-color "#b1c5ff"
     }
 }
 
@@ -146,6 +151,11 @@ window-rule {
 
 window-rule {
   match app-id=r#"kitty"#
+  open-on-workspace "dev"
+}
+
+window-rule {
+  match app-id=r#"Alacritty"#
   open-on-workspace "dev"
 }
 
@@ -191,17 +201,21 @@ switch-events { lid-close { spawn "swaylock";}; }
 
 binds {
   Mod+Shift+Slash { show-hotkey-overlay ; }
-  Mod+T { spawn "kitty"; }
-  Mod+Shift+T { spawn "kitty" "zsh"; }
+  Mod+T { spawn "alacritty" "msg" "create-window"; }
+  Mod+Shift+T { spawn "kitty"; }
   Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
   Mod+E { spawn-sh "~/.config/share/scripts/reload.sh"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+  Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+  Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
   XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
   XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; } 
   XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "5%+"; } 
+  Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "1%+"; } 
   XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "5%-"; }
+  Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "1%-"; }
   XF86AudioPlay { spawn "playerctl" "play-pause"; }
   Mod+Q { close-window ; }
   Mod+Left { focus-column-left ; }

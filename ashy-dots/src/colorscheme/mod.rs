@@ -8,7 +8,6 @@ use crate::colorscheme::dark::Dark;
 use crate::colorscheme::light::Light;
 use crate::colorscheme::terminal::Hellwal;
 use serde::{Deserialize, Serialize};
-use std::ops::Add;
 
 #[derive(Deserialize, Serialize, Debug)]
 #[allow(non_camel_case_types)]

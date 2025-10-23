@@ -1,0 +1,62 @@
+$background:#121318; // {<rcol(data.colors.background)>}
+$normal:    #b1c5ff; // {<rcol(data.colors.normal)>}
+$low:       #c0c6dc; // {<rcol(data.colors.low)>}
+$high:      #e0bbdd; // {<rcol(data.colors.high)>}
+$critical:  #ffb4ab; // {<rcol(data.colors.critical)>} 
+
+
+* {
+  // all: unset;
+  font-size: 13px;
+}
+
+tooltip {
+  background-color: $background;
+}
+
+.bar {
+  background-color: $background;
+  // background: none;
+  color: $normal;
+}
+
+.clock {
+  // background-color: $background;
+  // border-radius: 5px;
+  // border-bottom-left-radius: 15px;
+  color: $normal;
+}
+
+.battery-discharging {
+  color: $normal;
+}
+
+.battery-charging,
+.battery-charge {
+  color: $high;
+}
+
+calendar {
+  background-color: $background;
+  color: $normal;
+  border: none;
+}
+
+calendar:selected {
+  color: $background;
+  background-color: $high;
+  border-radius: 10%;
+}
+
+.system-tray {
+  // background-color: $background;
+  color: $normal;
+}
+
+.system-critical {
+  color: $critical;
+}
+//
+// .system-info {
+//   background-color: $background;
+// }

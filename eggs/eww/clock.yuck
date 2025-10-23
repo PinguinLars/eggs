@@ -1,0 +1,55 @@
+(
+ defwidget clock[]
+ (
+  eventbox
+  :class "clock"
+  :onclick "${EWW_CMD} open calendar --toggle; ${EWW_CMD} close system_tray"
+  :tooltip time_detailed
+  "${time}"
+  )
+ )
+
+(
+ defpoll time 
+ :interval "1s"
+ `date +%H:%M`
+ )
+
+(
+ defpoll time_detailed
+ :interval "1s"
+ `date +%H:%M:%S`
+ )
+
+(
+ defwindow calendar
+ :monitor 0
+ :geometry (
+            geometry
+            :x "0"
+            :y "0"
+            :width "20%"
+            ; :height "20%"
+            :anchor "top right"
+            )
+ :stacking "fg"
+ :exclusive "true"
+ :focusable "false"
+ :namespace "calendar"
+ (calendar_widget)
+ )
+
+(
+ defwidget calendar_widget[]
+ (
+  eventbox
+  :onhoverlost "${EWW_CMD} close calendar"
+  (
+   calendar
+   :show-details false
+   :show-heading true
+   :show-day-names true
+   "hi"
+   )
+  )
+ )

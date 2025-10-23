@@ -1,0 +1,47 @@
+(include "./clock.yuck")
+(include "./workspaces.yuck")
+(include "./system.yuck")
+
+(
+ defwindow bar
+ :monitor 0
+ :geometry
+ (
+  geometry
+  :x "0%"
+  :y "0.5%"
+  :width "99.5%"
+  :height "5%"
+  :anchor "top center"
+  )
+ :stacking "fg"
+ :exclusive true
+ :focusable false
+ (
+  centerbox
+  :orientation "h"
+  :class "bar"
+  (
+   box
+   :space-evenly false
+   :spacing 10
+   :halign "start"
+   (workspaces)
+   )
+  (
+   box
+   :spacing 10
+   :halign "center"
+   :space-evenly false
+   ; "UwU"
+   )
+  (
+   box
+   :spacing 10
+   :halign "end"
+   :space-evenly false
+   (system)
+   (clock)
+   )
+  )
+ )

@@ -1,177 +1,180 @@
-"$schema" = "https://starship.rs/config-schema.json"
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
-$username\
+[](default_bg)$username$hostname[](default_bg) \
 $directory\
-$git_branch\
-$git_status\
+$status\
 $fill\
 $c\
-$elixir\
-$elm\
-$golang\
-$haskell\
-$java\
-$kotlin\
+$cpp\
+$cmake\
+$gleam\
+$go\
 $gradle\
+$java\
 $julia\
+$kotlin\
+$lua\
 $nodejs\
-$nim\
-$rust\
-$scala\
-$conda\
 $python\
-$time\n  \
-$character\
-"""
-palette = "rose-pine"
+$rust
+$character"""
+right_format = "$time"
 
-[palettes.rose-pine]
-overlay = "#26233a"
-love = "#eb6f92"
-gold = "#f6c177"
-rose = "#ebbcba"
-pine = "#31748f"
-foam = "#9ccfd8"
-iris = "#c4a7e7"
+palette = "uwu"
 
-[character]
-success_symbol = "[󱞪](fg:iris)"
-error_symbol = "[󱞪](fg:love)"
+[palettes.uwu]
+time_bg = "#404659" # {<rcol(data.colors.starship_time_bg)>}
+time = "#dce2f9" # {<rcol(data.colors.starship_time)>}
+default_bg = "#304578" # {<rcol(data.colors.starship_default_bg)>}
+default = "#dae2ff" # {<rcol(data.colors.starship_default)>}
+succes = "#b1c5ff" #{<rcol(data.colors.normal)>}
+error = "#ffb4ab" #{<rcol(data.colors.critical)>}
 
 [directory]
-format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
-style = "bg:overlay fg:pine"
-use_os_path_sep = false
-truncation_length = 1
+format = "[](default_bg)[$read_only$path]($style)[](default_bg) "
+style = "bg:default_bg fg:default"
+read_only = '󰉐 '
 fish_style_pwd_dir_length = 1
+truncation_length = 1
+use_os_path_sep = false # / everywhere
+use_logical_path = true # resolve symlinks
 
-[fill]
-style = "fg:overlay"
-symbol = " "
-
-[git_branch]
-format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay) "
-style = "bg:overlay fg:foam"
-symbol = ""
-
-[git_status]
-disabled = false
-style = "bg:overlay fg:love"
-format = "[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) "
-up_to_date = "[ ✓ ](bg:overlay fg:iris)"
-untracked = '[?\($count\)](bg:overlay fg:gold)'
-stashed = '[\$](bg:overlay fg:iris)'
-modified = '[!\($count\)](bg:overlay fg:gold)'
-renamed = '[»\($count\)](bg:overlay fg:iris)'
-deleted = '[✘\($count\)](style)'
-staged = '[++\($count\)](bg:overlay fg:gold)'
-ahead = '[⇡\(${count}\)](bg:overlay fg:foam)'
-diverged = '⇕[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
-behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
+[character]
+success_symbol = "[󱞪](succes)"
+error_symbol = "[󱞪](error)"
 
 [time]
 disabled = false
-format = " [](fg:overlay)[ $time 󰴈 ]($style)[](fg:overlay)"
-style = "bg:overlay fg:rose"
-time_format = "%H:%M"
+time_format = "%R"
+format = "[](time_bg)[󰅐 $time](bg:time_bg fg:time)"
 
 [username]
-disabled = false
-format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay) "
 show_always = true
-style_root = "bg:overlay fg:iris"
-style_user = "bg:overlay fg:iris"
-aliases = { lars = "ashley" } # {< if !school_mode>}
+style_user = "fg:default bg:default_bg"
+style_root = "fg:error bg:default_bg"
+format = "[󰧱 $user]($style)"
+#<yolk> aliases = { lars = "ashley" } # {< if !school_mode>}
 
-# Languages
+[hostname]
+style = "fg:default bg:default_bg"
+format = "[@$hostname]($style)"
+
+[status]
+disabled = false
+map_symbol = true
+pipestatus = true
+success_style = "fg:default bg:default_bg"
+failure_style = "fg:error bg:default_bg"
+symbol = ' '
+not_executable_symbol = ''
+not_found_symbol = '󰍉 '
+sigint_symbol = ' '
+signal_symbol = '󰞏 '
+format = "[](default_bg)[$symbol$status]($style)[](default_bg)"
+pipestatus_separator = "[|](default_bg)"
+pipestatus_format = "$pipestatus [=>](default) [](default_bg)[$symbol$status]($style)[](default_bg)"
+
+[fill]
+symbol = ' '
+
+
+#: langs
+
+#: template
+
+# [lang]
+# format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+# version_format = 'v${raw}'
+# symbol = ''
+# style = 'fg:default bg:default_bg'
 
 [c]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
+format = ' [](default_bg)[$symbol$version|$name]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = "fg:default bg:default_bg"
+commands = [ [ 'clang', '--version' ], [ 'cc', '--version' ], [ 'gcc', '--version' ] ]
 
-[elixir]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+[cpp]
+format = ' [](default_bg)[$symbol$version|$name]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
 disabled = false
-symbol = " "
+commands = [ ['clang++','--version'], [ 'c++', '--version' ], [ 'g++', '--version' ] ]
 
-[elm]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
+[cmake]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${raw}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
 
-[golang]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
+[gleam]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
 
-[haskell]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
-
-[java]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = "󰛊 "
-
-[julia]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
-
-[nodejs]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = "󰎙 "
-
-[nim]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = "󰆥 "
-
-[rust]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
-
-[scala]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
-
-[python]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
-
-[conda]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
-disabled = false
-symbol = "🅒 "
-
-[kotlin]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = "󱈙 "
+# [go] #bugged
+# format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+# version_format = 'v${raw}'
+# symbol = '󰟓 '
+# style = 'fg:default bg:default_bg'
 
 [gradle]
-style = "bg:overlay fg:pine"
-format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
-disabled = false
-symbol = " "
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${raw}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+[java]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${major}'
+symbol = '󰅶 '
+style = 'fg:default bg:default_bg'
+
+[julia]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${raw}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+[kotlin]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+[lua]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${raw}'
+symbol = '󰢱 '
+style = 'fg:default bg:default_bg'
+
+[nodejs]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+[python]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+[rust]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${major}.${minor}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+#: template
+
+# [lang]
+# format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+# version_format = 'v${raw}'
+# symbol = ''
+# style = 'fg:default bg:default_bg'
 

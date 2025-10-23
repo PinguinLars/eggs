@@ -1,0 +1,112 @@
+(defpoll battery :interval "5s" "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | grep -o '[0-9]*'")
+(deflisten battery_status "~/.config/eww/scripts/battery.sh")
+
+(
+ defwidget battery[]
+ (
+  box
+  :tooltip "${battery}% ${battery_status}"
+  :class "battery-${battery_status} ${battery <= 15 ? 'system-critical' : ''}"
+   (
+    circular-progress
+    :value battery
+    :thickness 3
+    (
+     image
+     :path "./images/battery/${battery <= 15 && battery_status == 'discharging' ? 'critical' : battery_status}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   )
+ )
+
+(
+ defwidget cpu[]
+  (
+   box
+   :tooltip "Total: ${round(EWW_CPU.avg,0)}%
+core0: ${EWW_CPU.cores[0].usage}%
+core1: ${EWW_CPU.cores[1].usage}%
+core2: ${EWW_CPU.cores[2].usage}%
+core3: ${EWW_CPU.cores[3].usage}%"
+   :class "${EWW_CPU.avg >= 90 ? 'system-critical' : ''}"
+   (
+    circular-progress
+    :value {EWW_CPU.avg}
+    :thickness 3
+    (
+     image
+     :path "./images/cpu.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   )
+ )
+
+(
+ defwidget ram[]
+  (
+   box
+   :tooltip "${formatbytes(round(EWW_RAM.used_mem, 0))} / ${formatbytes(round(EWW_RAM.total_mem, 0))}
+${formatbytes(round(EWW_RAM.total_swap - EWW_RAM.free_swap, 0))} / ${formatbytes(round(EWW_RAM.total_swap, 0))}"
+   :class "${EWW_RAM.used_mem_perc >= 90 ? 'system-critical' : ''}"
+   (
+    circular-progress
+    :value {EWW_RAM.used_mem_perc}
+    :thickness 3
+    (
+     image
+     :path "./images/ram.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   )
+ )
+
+(
+ defwidget system[]
+ (
+  eventbox
+  :class "system-info"
+  :width 99
+  :onclick "${EWW_CMD} open system_tray --toggle; ${EWW_CMD} close calendar"
+  (
+   box
+   (ram)
+   (cpu)
+   (battery)
+   )
+  )
+ )
+
+(
+ defwindow system_tray
+ :monitor 0
+ :geometry (
+            geometry
+            :x "0"
+            :y "0"
+            :width "20%"
+            :height "20%"
+            :anchor "top right"
+            )
+ :stacking "fg"
+ :exclusive "true"
+ :focusable "false"
+ :namespace "system_tray"
+ (system_tray)
+ )
+
+(
+ defwidget system_tray[]
+ (
+  eventbox
+  :onhoverlost "${EWW_CMD} close system_tray"
+  :class "system-tray"
+   ; ":3"
+  )
+ )
+

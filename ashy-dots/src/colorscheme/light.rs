@@ -31,27 +31,31 @@ impl ColorMode for Light {
             format!("term_inactive_tab_background:\"{}\",", self.surface_container),
             format!("term_selection_foreground:\"{}\",", self.on_surface),
             format!("term_selection_background:\"{}\",", self.surface_container_highest),
-            // "term_color0: \"#000000\",".into(),  //default
-            // "term_color8: \"#767676\",".into(),  //default
-            // "term_color1: \"#cc0403\",".into(),  //default
-            // "term_color9: \"#f2201f\",".into(),  //default
-            // "term_color2: \"#19cb00\",".into(),  //default
-            // "term_color10: \"#23fd00\",".into(),   //default
-            // "term_color3: \"#cecb00\",".into(),  //default
-            // "term_color11: \"#fffd00\",".into(), //default
-            // "term_color4: \"#0d73cc\",".into(),  //default
-            // "term_color12: \"#1a8fff\",".into(),   //default
-            // "term_color5: \"#cb1ed1\",".into(),  //default
-            // "term_color13: \"#fd28ff\",".into(), //default
-            // "term_color6: \"#0dcdcd\",".into(),  //default
-            // "term_color14: \"#14ffff\",".into(),   //default
-            // "term_color7: \"#dddddd\",".into(),  //default
-            // "term_color15: \"#ffffff\",".into(), //default
+             "term_color0: \"#000000\",".into(),  //default
+             "term_color8: \"#767676\",".into(),  //default
+             "term_color1: \"#cc0403\",".into(),  //default
+             "term_color9: \"#f2201f\",".into(),  //default
+             "term_color2: \"#19cb00\",".into(),  //default
+             "term_color10: \"#23fd00\",".into(),   //default
+             "term_color3: \"#cecb00\",".into(),  //default
+             "term_color11: \"#fffd00\",".into(), //default
+             "term_color4: \"#0d73cc\",".into(),  //default
+             "term_color12: \"#1a8fff\",".into(),   //default
+             "term_color5: \"#cb1ed1\",".into(),  //default
+             "term_color13: \"#fd28ff\",".into(), //default
+             "term_color6: \"#0dcdcd\",".into(),  //default
+             "term_color14: \"#14ffff\",".into(),   //default
+             "term_color7: \"#dddddd\",".into(),  //default
+             "term_color15: \"#ffffff\",".into(), //default
             format!("link: \"{}\",", self.primary_container),
             format!("title: \"{}\",", self.primary),
             format!("key: \"{}\",", self.secondary),
             format!("screen_cast: \"{}\",", self.error),
             format!("screen_cast_unfocused: \"{}\",", self.primary),
+            format!("starship_time_bg: \"{}\",", self.secondary_container),
+            format!("starship_time: \"{}\",", self.on_secondary_container),
+            format!("starship_default_bg: \"{}\",", self.primary_container),
+            format!("starship_default: \"{}\",", self.on_primary_container),
             "};".into(),
         ];
         test.join("\n") + "\n"

@@ -1,7 +1,7 @@
 import "colors" as colors;
 import "dynamic" as dynamic;
 
-let school_mode = false;
+let school_mode = true;
 let dynamic_colors = true;
 let dark_mode = true;
 let font = "JetBrainsMono Nerd Font Propo";
@@ -11,8 +11,9 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
-    normal: "lockedin.png",
-    school: "weeb.png",
+    normal: "sakura.png",
+    school: "mc_pride.png",
+    random: false,
 };
 
 export let data = #{
@@ -24,6 +25,18 @@ export let data = #{
     } else {
         colorscheme
     },
+    //raw_colors: #{
+    //    dark: if dynamic_colors {
+    //        dynamic::dark
+    //    } else {
+    //        colorscheme
+    //    },
+    //    light: if dynamic_colors {
+    //        dynamic::light
+    //    } else {
+    //        colorscheme
+    //    },
+    //},
     font: font,
     assets_path: ".config/share/",
     test: if dynamic_colors {
@@ -33,6 +46,7 @@ export let data = #{
     },
     wallpaper: wallpaper.normal,
     wallpaper_school: wallpaper.school,
+    random_wallpaper: wallpaper.random,
     school_mode: school_mode,
 };
 
@@ -106,6 +120,11 @@ export let eggs = #{
     },
     assets: #{
         targets: "~/.config/share",
+        enabled: true,
+    },
+    eww: #{
+        targets: "~/.config/eww",
+        templates: ["*.scss", "*.yuck", "**/*.svg"],
         enabled: true,
     }
 };

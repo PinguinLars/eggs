@@ -111,6 +111,10 @@ export const colorschemes = #{
         key: "",
         screen_cast: "",
         screen_cast_unfocused: "",
+        starship_time_bg: "",
+        starship_time: "",
+        starship_default_bg: "",
+        starship_default: "",
     },
     test: #{
         foreground: "#f1dfd9",//on_background

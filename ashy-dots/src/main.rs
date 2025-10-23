@@ -1,28 +1,32 @@
 mod colorscheme;
+mod random;
 
 use crate::colorscheme::{Colorscheme, combine_colorschemes, terminal::Hellwal};
 use std::{
     env,
     fs::File,
-    io::{Error, Write},
+    io::{Error, Result as IOResult, Write},
     path::Path,
     process::Command,
 };
 
 #[allow(unreachable_code)]
-fn main() -> Result<(), Error> {
+fn main() -> IOResult<()> {
+    dbg!(random::get_random_wallpaper());
+    //return Ok(());
     let mut args = env::args();
     let _executable = args.next();
     let wallpaper_path = match args.next() {
         Some(path_raw) => path_raw,
         None => panic!("No wallpaper path"),
     };
-    let term_dark = serde_json::from_str::<Hellwal>(&run_hellwal(&wallpaper_path, true)?)?;
-    let term_light = serde_json::from_str::<Hellwal>(&run_hellwal(&wallpaper_path, false)?)?;
+
+    //let term_dark = serde_json::from_str::<Hellwal>(&run_hellwal(&wallpaper_path, true)?)?;
+    //let term_light = serde_json::from_str::<Hellwal>(&run_hellwal(&wallpaper_path, false)?)?;
     let json = run_matugen(&wallpaper_path)?;
     let output: Colorscheme = serde_json::from_str(&json)?;
-    println!("{}", combine_colorschemes(output, term_dark, term_light));
-    return Ok(());
+    //println!("{}", combine_colorschemes(output, term_dark, term_light));
+    //return Ok(());
     let yolk_dir = match env::var("YOLK_DIR") {
         Ok(val) => val.into(),
         Err(_) => match env::home_dir() {

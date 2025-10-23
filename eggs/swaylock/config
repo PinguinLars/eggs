@@ -1,5 +1,6 @@
 # Background color
-color=#191724
+#{#rcol(data.colors.background)#}
+color=#121318
 #{-#rv(get_wallpaper_path("~"))#}
 #image=~/.config/share/wallpapers/weeb.png
 
@@ -9,38 +10,60 @@ layout-border-color=#00000000
 layout-text-color=#e0def4
 
 # Text color
-text-color=#31748f
-text-clear-color=#9ccfd8
-text-caps-lock-color=#f6c177
-text-ver-color=#c4a7e7
-text-wrong-color=#eb6f92
+#{#rcol(data.colors.normal)#}
+text-color=#b1c5ff
+#{#rcol(data.colors.low)#}
+text-clear-color=#c0c6dc
+#{#rcol(data.colors.critical)#}
+text-caps-lock-color=#ffb4ab
+#{#rcol(data.colors.high)#}
+text-ver-color=#e0bbdd
+#{#rcol(data.colors.error)#}
+text-wrong-color=#93000a
 
 # Highlight segments
 bs-hl-color=#19172466
-key-hl-color=#31748f
+#{#rcol(data.colors.normal)#}
+key-hl-color=#b1c5ff
 caps-lock-bs-hl-color=#19172466
-caps-lock-key-hl-color=#f6c177
+#{#rcol(data.colors.critical)#}
+caps-lock-key-hl-color=#ffb4ab
 
 # Highlight segments separator
 separator-color=#00000000
 
 # Inside of the indicator
-inside-color=#31748f55
-inside-clear-color=#9ccfd855
-inside-caps-lock-color=#f6c17755
-inside-ver-color=#c4a7e755
-inside-wrong-color=#eb6f9255
+#{#rcol(data.colors.normal + "55")#}
+inside-color=#b1c5ff55
+#{#rcol(data.colors.low + "55")#}
+inside-clear-color=#c0c6dc55
+#{#rcol(data.colors.critical + "55")#}
+inside-caps-lock-color=#ffb4ab55
+#{#rcol(data.colors.high + "55")#}
+inside-ver-color=#e0bbdd55
+#{#rcol(data.colors.error + "55")#}
+inside-wrong-color=#93000a55
 
 # Line between the inside and ring
-line-color=#31748f11
-line-clear-color=#9ccfd811
-line-caps-lock-color=#f6c17711
-line-ver-color=#c4a7e711
-line-wrong-color=#eb6f9211
+#{#rcol(data.colors.normal + "11")#}
+line-color=#b1c5ff11
+#{#rcol(data.colors.low + "11")#}
+line-clear-color=#c0c6dc11
+#{#rcol(data.colors.critical + "11")#}
+line-caps-lock-color=#ffb4ab11
+#{#rcol(data.colors.high + "11")#}
+line-ver-color=#e0bbdd11
+#{#rcol(data.colors.error + "11")#}
+line-wrong-color=#93000a11
 
 # Indicator ring
-ring-color=#31748faa
-ring-clear-color=#9ccfd8aa
-ring-caps-lock-color=#f6c177aa
-ring-ver-color=#c4a7e7aa
-ring-wrong-color=#eb6f92aa
+#{#rcol(data.colors.normal + "aa")#}
+ring-color=#b1c5ffaa
+#{#rcol(data.colors.low + "aa")#}
+ring-clear-color=#c0c6dcaa
+#{#rcol(data.colors.critical + "aa")#}
+ring-caps-lock-color=#ffb4abaa
+#{#rcol(data.colors.high + "aa")#}
+ring-ver-color=#e0bbddaa
+#{#rcol(data.colors.error + "aa")#}
+ring-wrong-color=#93000aaa
