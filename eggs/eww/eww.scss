@@ -1,34 +1,41 @@
-$background:#121318; // {<rcol(data.colors.background)>}
-$normal:    #b1c5ff; // {<rcol(data.colors.normal)>}
-$low:       #c0c6dc; // {<rcol(data.colors.low)>}
-$high:      #e0bbdd; // {<rcol(data.colors.high)>}
-$critical:  #ffb4ab; // {<rcol(data.colors.critical)>} 
-
+$background: #1a1111; // {<rcol(data.colors.background)>}
+$normal: #ffb3b1; // {<rcol(data.colors.normal)>}
+$low: #e6bdbb; // {<rcol(data.colors.low)>}
+$high: #e3c28d; // {<rcol(data.colors.high)>}
+$critical: #ffb4ab; // {<rcol(data.colors.critical)>}
+$focused: #5d3f3e; // {<rcol(data.colors.starship_time_bg)>} //TODO: chance name
 
 * {
-  // all: unset;
+  all: unset;
   font-size: 13px;
+}
+
+.widget {
+  background-color: $background;
+  border-radius: 10px;
 }
 
 tooltip {
   background-color: $background;
+  border-radius: 10px;
+  margin: 0.75rem;
 }
 
 .bar {
-  background-color: $background;
-  // background: none;
+  background: none;
   color: $normal;
 }
 
 .clock {
-  // background-color: $background;
-  // border-radius: 5px;
-  // border-bottom-left-radius: 15px;
   color: $normal;
 }
 
 .battery-discharging {
   color: $normal;
+}
+
+.system-critical {
+  color: $critical;
 }
 
 .battery-charging,
@@ -49,14 +56,26 @@ calendar:selected {
 }
 
 .system-tray {
-  // background-color: $background;
+  background-color: $background;
   color: $normal;
 }
 
-.system-critical {
-  color: $critical;
+.desktop-widgets {
+  background: none;
 }
-//
-// .system-info {
-//   background-color: $background;
-// }
+
+.desktop-widget {
+  background-color: $background;
+  border-radius: 16px;
+  padding: 12px;
+  color: $normal;
+}
+
+.desktop-app:hover {
+  background-color: $focused;
+  border-radius: 4px;
+}
+
+.test {
+  background-color: $background;
+}

@@ -35,15 +35,15 @@
       "calendar": {
         "format": {
           //{#rcol(data.colors.calendar_days)#}
-          "days": "<span color='#c0c6dc'><b>{}</b></span>",
+          "days": "<span color='#e6bdbb'><b>{}</b></span>",
           //{#rcol(data.colors.calendar_months)#}
-          "months": "<span color='#b1c5ff'><b>{}</b></span>",
+          "months": "<span color='#ffb3b1'><b>{}</b></span>",
           //{#rcol(data.colors.calendar_today)#}
-          "today": "<span color='#e0bbdd'><b><u>{}</u></b></span>",
+          "today": "<span color='#e3c28d'><b><u>{}</u></b></span>",
           //{#rcol(data.colors.calendar_weekdays)#}
-          "weekdays": "<span color='#b1c5ff'><b>{}</b></span>",
+          "weekdays": "<span color='#ffb3b1'><b>{}</b></span>",
           //{#rcol(data.colors.calendar_weeks)#}
-          "weeks": "<span color='#e0bbdd'><b>W{}</b></span>"
+          "weeks": "<span color='#e3c28d'><b>W{}</b></span>"
         },
         "mode": "month",
         "mode-mon-col": 3,

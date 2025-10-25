@@ -24,11 +24,11 @@ right_format = "$time"
 palette = "uwu"
 
 [palettes.uwu]
-time_bg = "#404659" # {<rcol(data.colors.starship_time_bg)>}
-time = "#dce2f9" # {<rcol(data.colors.starship_time)>}
-default_bg = "#304578" # {<rcol(data.colors.starship_default_bg)>}
-default = "#dae2ff" # {<rcol(data.colors.starship_default)>}
-succes = "#b1c5ff" #{<rcol(data.colors.normal)>}
+time_bg = "#5d3f3e" # {<rcol(data.colors.starship_time_bg)>}
+time = "#ffdad8" # {<rcol(data.colors.starship_time)>}
+default_bg = "#733333" # {<rcol(data.colors.starship_default_bg)>}
+default = "#ffdad8" # {<rcol(data.colors.starship_default)>}
+succes = "#ffb3b1" #{<rcol(data.colors.normal)>}
 error = "#ffb4ab" #{<rcol(data.colors.critical)>}
 
 [directory]
@@ -54,7 +54,7 @@ show_always = true
 style_user = "fg:default bg:default_bg"
 style_root = "fg:error bg:default_bg"
 format = "[󰧱 $user]($style)"
-#<yolk> aliases = { lars = "ashley" } # {< if !school_mode>}
+aliases = { lars = "ashley" } # {< if !school_mode>}
 
 [hostname]
 style = "fg:default bg:default_bg"

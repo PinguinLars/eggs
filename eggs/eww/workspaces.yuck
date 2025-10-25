@@ -1,3 +1,5 @@
+;; -*- mode: lisp -*-
+
 (deflisten active_workspace :initial "1" `~/.config/eww/scripts/active_workspace.sh`)
 (deflisten workspaces :initial "[]" `~/.config/eww/scripts/get_workspaces.sh`)
 
@@ -6,6 +8,7 @@
  (
   eventbox
   :onclick "echo ${active_workspace}"
+  :class "widget"
   :onscroll "~/.config/eww/scripts/switch_workspace.sh {} ${active_workspace}"
   (
    box :space-evenly false

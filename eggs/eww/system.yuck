@@ -1,3 +1,5 @@
+;; -*- mode: lisp -*-
+
 (defpoll battery :interval "5s" "upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | grep -o '[0-9]*'")
 (deflisten battery_status "~/.config/eww/scripts/battery.sh")
 
@@ -70,7 +72,7 @@ ${formatbytes(round(EWW_RAM.total_swap - EWW_RAM.free_swap, 0))} / ${formatbytes
  defwidget system[]
  (
   eventbox
-  :class "system-info"
+  :class "system-info widget"
   :width 99
   :onclick "${EWW_CMD} open system_tray --toggle; ${EWW_CMD} close calendar"
   (
@@ -87,8 +89,8 @@ ${formatbytes(round(EWW_RAM.total_swap - EWW_RAM.free_swap, 0))} / ${formatbytes
  :monitor 0
  :geometry (
             geometry
-            :x "0"
-            :y "0"
+            :x "12px"
+            :y "12px"
             :width "20%"
             :height "20%"
             :anchor "top right"

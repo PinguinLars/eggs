@@ -4,9 +4,9 @@
     "separator": ": ",
     "color": {
       //{#rcol(data.colors.title)#}
-      "title": "#b1c5ff",
+      "title": "#ffb3b1",
       //{#rcol(data.colors.key)#}
-      "keys": "#c0c6dc"
+      "keys": "#e6bdbb"
     },
     "key": {
       "width": 30,
@@ -20,7 +20,7 @@
   },
   "modules": [
     // {#fetch_title()#}
-    "title",
+    {"type": "title","format": "{#bold_#ffb3b1}ashley{#}@{#bold_#ffb3b1}{host-name}"},
     "separator",
     "os",
     "host",

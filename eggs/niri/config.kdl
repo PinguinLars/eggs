@@ -12,9 +12,9 @@ input {
   keyboard {
     xkb {
       // {% if data.school_mode %}
-      options "compose:caps,mod_led:compose"
+      //<yolk> options "compose:caps,mod_led:compose"
       // {% else %}
-      //<yolk> options "caps:escape,compose:ralt"
+      options "caps:escape,compose:ralt"
       // {% end %}
     }
   }
@@ -22,7 +22,7 @@ input {
   touchpad {
     tap
     natural-scroll
-    // dwt //{< if data.school_mode >}
+    //<yolk> // dwt //{< if data.school_mode >}
     tap-button-map "left-right-middle"
   }
 
@@ -38,6 +38,7 @@ input {
 cursor {
     xcursor-theme "BreezeX-RosePine-Linux"
     hide-after-inactive-ms 5000
+    hide-when-typing
 }
 
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
@@ -63,7 +64,15 @@ output "HDMI-A-1" {
 
 layout {
   gaps 16
-  center-focused-column "never"
+  center-focused-column "on-overflow"
+  always-center-single-column
+  // empty-workspace-above-first
+  background-color "transparent"
+
+  tab-indicator {
+    hide-when-single-tab
+    place-within-column
+  }
 
   preset-column-widths {
     proportion 0.33333
@@ -76,34 +85,37 @@ layout {
   focus-ring {
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#b1c5ff"
+    active-color "#ffb3b1"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#44464f"
+    inactive-color "#524342"
   }
 
   border {
     off
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#b1c5ff"
+    active-color "#ffb3b1"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#44464f"
+    inactive-color "#524342"
   }
 
   shadow {
-    softness 30
-    spread 5
+    // on
+    softness 10
+    spread 1
     offset x=0 y=5
     color "#000000"
   }
 
   struts { }
-  background-color "transparent"
+  insert-hint {
+    //{#rcol(data.colors.focused + "80")#}
+    color "#ffb3b180"
+  }
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-animations {
-}
+animations { }
 
 window-rule {
   match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -129,7 +141,7 @@ window-rule {
       //{#rcol(data.colors.screen_cast)#}
       active-color "#ffb4ab"
       //{#rcol(data.colors.screen_cast_unfocused)#}
-      inactive-color "#b1c5ff"
+      inactive-color "#ffb3b1"
     }
 }
 
@@ -176,6 +188,11 @@ window-rule {
   open-on-workspace "games"
 }
 
+window-rule {
+  match title=r#"rofi"#
+  open-floating true
+}
+
 layer-rule {
   match namespace="^wallpaper$"
   place-within-backdrop true
@@ -200,9 +217,11 @@ layer-rule {
 switch-events { lid-close { spawn "swaylock";}; }
 
 binds {
+  Mod+Y { spawn "eww" "open" "desktop" "--toggle"; }
   Mod+Shift+Slash { show-hotkey-overlay ; }
   Mod+T { spawn "alacritty" "msg" "create-window"; }
   Mod+Shift+T { spawn "kitty"; }
+  // Mod+D { spawn "rofi" "-show" "drun"; }
   Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
   Mod+E { spawn-sh "~/.config/share/scripts/reload.sh"; }
@@ -325,13 +344,21 @@ binds {
   Ctrl+Print { screenshot-screen ; }
   Alt+Print { screenshot-window ; }
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit ; }
-  Mod+Shift+E { quit ; }
-  Ctrl+Alt+Delete { quit ; }
-  Mod+Shift+P { power-off-monitors ; }
-  Mod+B { toggle-overview ;}
+  Mod+Shift+E { spawn "wlogout"; }
+  Ctrl+Alt+Delete { quit; }
+  Mod+Shift+P { power-off-monitors; }
+  Mod+B { toggle-overview; }
 }
 
-overview { workspace-shadow { }; }
+overview { 
+  zoom 0.25
+  workspace-shadow {
+    softness 100
+    spread 1
+    offset x=0 y=5
+    color "#000000"
+  }; 
+}
 
 hotkey-overlay {
   skip-at-startup

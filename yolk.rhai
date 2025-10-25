@@ -1,7 +1,7 @@
 import "colors" as colors;
 import "dynamic" as dynamic;
 
-let school_mode = true;
+let school_mode = false;
 let dynamic_colors = true;
 let dark_mode = true;
 let font = "JetBrainsMono Nerd Font Propo";
@@ -11,7 +11,8 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
-    normal: "sakura.png",
+    //normal: "sakura.png",
+    normal: "spooky_party.png",
     school: "mc_pride.png",
     random: false,
 };
@@ -126,7 +127,12 @@ export let eggs = #{
         targets: "~/.config/eww",
         templates: ["*.scss", "*.yuck", "**/*.svg"],
         enabled: true,
-    }
+    },
+    wlogout: #{
+        targets: "~/.config/wlogout",
+        templates: ["*.css"],
+        enabled: true,
+    },
 };
 
 fn fetch_title() {

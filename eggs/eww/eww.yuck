@@ -1,6 +1,9 @@
+;; -*- mode: lisp -*-
+
 (include "./clock.yuck")
 (include "./workspaces.yuck")
 (include "./system.yuck")
+(include "./desktop.yuck")
 
 (
  defwindow bar
@@ -9,8 +12,8 @@
  (
   geometry
   :x "0%"
-  :y "0.5%"
-  :width "99.5%"
+  :y "0.0%"
+  :width "100.0%"
   :height "5%"
   :anchor "top center"
   )
@@ -20,7 +23,7 @@
  (
   centerbox
   :orientation "h"
-  :class "bar"
+   :class "bar"
   (
    box
    :space-evenly false
@@ -33,7 +36,17 @@
    :spacing 10
    :halign "center"
    :space-evenly false
-   ; "UwU"
+   (
+    box
+    :width 100
+    (
+     scale
+     :class "test"
+     :min 0
+     :max 100
+     :hexpand true
+     )
+    )
    )
   (
    box

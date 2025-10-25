@@ -1,12 +1,12 @@
 sort=-time
 layer=overlay
 #{#rcol(data.colors.noti_background)#}
-background-color=#121318
+background-color=#1a1111
 width=300
 height=110
 border-size=4
 #{#rcol(data.colors.normal)#}
-border-color=#b1c5ff
+border-color=#ffb3b1
 border-radius=15
 icons=1
 max-icon-size=64
@@ -17,15 +17,15 @@ max-history=20
 
 [urgency=low]
 #{#rcol(data.colors.low)#}
-border-color=#c0c6dc
+border-color=#e6bdbb
 
 [urgency=normal]
 #{#rcol(data.colors.normal)#}
-border-color=#b1c5ff
+border-color=#ffb3b1
 
 [urgency=high]
 #{#rcol(data.colors.high)#}
-border-color=#e0bbdd
+border-color=#e3c28d
 default-timeout=0
 
 [category=mpd]

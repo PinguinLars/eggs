@@ -1,8 +1,10 @@
+;; -*- mode: lisp -*-
+
 (
  defwidget clock[]
  (
   eventbox
-  :class "clock"
+  :class "clock widget"
   :onclick "${EWW_CMD} open calendar --toggle; ${EWW_CMD} close system_tray"
   :tooltip time_detailed
   "${time}"

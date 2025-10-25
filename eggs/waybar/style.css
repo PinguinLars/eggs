@@ -23,27 +23,27 @@ window#waybar {
 
 #workspaces button {
   /*{#rcol(data.colors.text)#}*/
-  color: #e2e2e9;
+  color: #f0dedd;
   /*{#rcol(data.colors.background)#}*/
-  background-color: #121318;
+  background-color: #1a1111;
   border-radius: 10px;
 }
 
 #workspaces button.empty {
   /*{#rcol(data.colors.unfocused)#}*/
-  color: #44464f;
+  color: #524342;
 }
 
 #workspaces button.focused {
   /*{#rcol(data.colors.normal)#}*/
-  color: #b1c5ff;
+  color: #ffb3b1;
 }
 
 #workspaces button:hover {
   /*{#rcol(data.colors.subtle_highlight)#}*/
-  background: #38393f;
+  background: #423736;
   /*{#rcol(data.colors.waybar_button_hover)#}*/
-  color: #b1c5ff;
+  color: #ffb3b1;
   box-shadow: none;
   border: none;
 }
@@ -73,9 +73,9 @@ window#waybar {
 #memory {
   padding: 0 10px;
   /*{#rcol(data.colors.normal)#}*/
-  color: #b1c5ff;
+  color: #ffb3b1;
   /*{#rcol(data.colors.background)#}*/
-  background-color: #121318;
+  background-color: #1a1111;
   border-radius: 10px;
 }
 
@@ -93,9 +93,9 @@ window#waybar {
 #backlight:hover {
   padding: 0 10px;
   /*{#rcol(data.colors.background)#}*/
-  color: #121318;
+  color: #1a1111;
   /*{#rcol(data.colors.normal)#}*/
-  background-color: #b1c5ff;
+  background-color: #ffb3b1;
   border-radius: 10px;
 }
 
@@ -108,7 +108,7 @@ window#waybar {
   /*{#rcol(data.colors.critical)#}*/
   background-color: #ffb4ab;
   /*{#rcol(data.colors.background)#}*/
-  color: #121318;
+  color: #1a1111;
 }
 
 #network.linked,
@@ -124,7 +124,7 @@ window#waybar {
   /*{#rcol(data.colors.error)#}*/
   background-color: #93000a;
   /*{#rcol(data.colors.background)#}*/
-  color: #121318;
+  color: #1a1111;
 }
 
 @keyframes blink {
@@ -153,7 +153,7 @@ window#waybar {
 #power-profiles-daemon.performance,
 #bluetooth.disabled {
   /*{#rcol(data.colors.high)#}*/
-  color: #e0bbdd;
+  color: #e3c28d;
 }
 
 #privacy-item.screenshare {
@@ -164,9 +164,9 @@ window#waybar {
 #power-profiles-daemon.performance:hover,
 #bluetooth.disabled:hover {
   /*{#rcol(data.colors.background)#}*/
-  color: #121318;
+  color: #1a1111;
   /*{#rcol(data.colors.high)#}*/
-  background-color: #e0bbdd;
+  background-color: #e3c28d;
 }
 
 #power-profiles-daemon.power-saver,
@@ -174,25 +174,25 @@ window#waybar {
 #pulseaudio:not(.muted),
 #privacy-item.audio-out {
   /*{#rcol(data.colors.low)#}*/
-  color: #c0c6dc;
+  color: #e6bdbb;
 }
 
 #power-profiles-daemon.power-saver:hover,
 #pulseaudio:not(.muted):hover {
   /*{#rcol(data.colors.background)#}*/
-  color: #121318;
+  color: #1a1111;
   /*{#rcol(data.colors.low)#}*/
-  background-color: #c0c6dc;
+  background-color: #e6bdbb;
 }
 
 #taskbar button.active {
   /*{#rcol(data.colors.waybar_button_active)#}*/
-  background-color: #e0bbdd;
+  background-color: #e3c28d;
 }
 
 #taskbar button:hover {
   /*{#rcol(data.colors.waybar_button_hover)#}*/
-  background: #b1c5ff;
+  background: #ffb3b1;
   box-shadow: none;
   border: none;
 }
