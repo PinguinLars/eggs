@@ -1,9 +1,11 @@
 workspace "browser" {
   open-on-output "eDP-1"
 }
+
 workspace "dev" {
   open-on-output "eDP-1" 
 }
+
 workspace "games" { 
   open-on-output "eDP-1" 
 }
@@ -12,9 +14,9 @@ input {
   keyboard {
     xkb {
       // {% if data.school_mode %}
-      //<yolk> options "compose:caps,mod_led:compose"
+      //<yolk> options "compose:caps"
       // {% else %}
-      options "caps:escape,compose:ralt"
+      options "caps:escape_shifted_capslock,compose:ralt"
       // {% end %}
     }
   }
@@ -24,6 +26,7 @@ input {
     natural-scroll
     //<yolk> // dwt //{< if data.school_mode >}
     tap-button-map "left-right-middle"
+    drag-lock
   }
 
   mouse {
@@ -41,15 +44,15 @@ cursor {
     hide-when-typing
 }
 
-spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+// spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "/usr/lib/xdg-desktop-portal"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gnome"
 spawn-at-startup "/usr/bin/xwayland-satellite"
-//spawn-at-startup "bash" "-c" "swaybg -i home/lars/background/weeb.png &" //done with systemd service
 spawn-at-startup "/usr/bin/swww-daemon"
 spawn-at-startup "/usr/bin/waybar"
-spawn-at-startup "bash" "-c" "alacritty --daemon"
+spawn-at-startup "/usr/bin/alacritty" "--daemon"
+spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 
 prefer-no-csd
 
@@ -85,18 +88,18 @@ layout {
   focus-ring {
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#ffb3b1"
+    active-color "#82d3e1"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#524342"
+    inactive-color "#3f484a"
   }
 
   border {
     off
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#ffb3b1"
+    active-color "#82d3e1"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#524342"
+    inactive-color "#3f484a"
   }
 
   shadow {
@@ -110,12 +113,13 @@ layout {
   struts { }
   insert-hint {
     //{#rcol(data.colors.focused + "80")#}
-    color "#ffb3b180"
+    color "#82d3e180"
   }
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-animations { }
+animations {
+}
 
 window-rule {
   match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -141,7 +145,7 @@ window-rule {
       //{#rcol(data.colors.screen_cast)#}
       active-color "#ffb4ab"
       //{#rcol(data.colors.screen_cast_unfocused)#}
-      inactive-color "#ffb3b1"
+      inactive-color "#82d3e1"
     }
 }
 
@@ -194,6 +198,11 @@ window-rule {
 }
 
 layer-rule {
+  match namespace=r#"desktop-widgets"#
+  place-within-backdrop true
+}
+
+layer-rule {
   match namespace="^wallpaper$"
   place-within-backdrop true
 }
@@ -218,11 +227,13 @@ switch-events { lid-close { spawn "swaylock";}; }
 
 binds {
   Mod+Y { spawn "eww" "open" "desktop" "--toggle"; }
+  Mod+G { spawn "flatpak" "run" "app.zen_browser.zen"; }
+  Mod+Shift+G { spawn "vesktop"; }
   Mod+Shift+Slash { show-hotkey-overlay ; }
   Mod+T { spawn "alacritty" "msg" "create-window"; }
   Mod+Shift+T { spawn "kitty"; }
-  // Mod+D { spawn "rofi" "-show" "drun"; }
-  Mod+D { spawn "fuzzel"; }
+  Mod+D { spawn "rofi" "-show" "drun"; }
+  // Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
   Mod+E { spawn-sh "~/.config/share/scripts/reload.sh"; }
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }

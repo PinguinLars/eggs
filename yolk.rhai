@@ -11,8 +11,7 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
-    //normal: "sakura.png",
-    normal: "spooky_party.png",
+    normal: "sakura.png",
     school: "mc_pride.png",
     random: false,
 };
@@ -112,7 +111,7 @@ export let eggs = #{
     quickshell: #{
         targets: "~/.config/quickshell",
         templates: ["*.qml"],
-        enabled: false,
+        enabled: true,
     },
     lsd: #{
         targets: "~/.config/lsd",

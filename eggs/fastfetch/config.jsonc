@@ -4,9 +4,9 @@
     "separator": ": ",
     "color": {
       //{#rcol(data.colors.title)#}
-      "title": "#ffb3b1",
+      "title": "#82d3e1",
       //{#rcol(data.colors.key)#}
-      "keys": "#e6bdbb"
+      "keys": "#b1cbd0"
     },
     "key": {
       "width": 30,
@@ -18,9 +18,12 @@
       "charTotal": "-"
     }
   },
+  "logo": {
+    "type": "small"
+  },
   "modules": [
     // {#fetch_title()#}
-    {"type": "title","format": "{#bold_#ffb3b1}ashley{#}@{#bold_#ffb3b1}{host-name}"},
+    {"type": "title","format": "{#bold_#82d3e1}ashley{#}@{#bold_#82d3e1}{host-name}"},
     "separator",
     "os",
     "host",

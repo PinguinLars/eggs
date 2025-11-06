@@ -24,11 +24,11 @@ right_format = "$time"
 palette = "uwu"
 
 [palettes.uwu]
-time_bg = "#5d3f3e" # {<rcol(data.colors.starship_time_bg)>}
-time = "#ffdad8" # {<rcol(data.colors.starship_time)>}
-default_bg = "#733333" # {<rcol(data.colors.starship_default_bg)>}
-default = "#ffdad8" # {<rcol(data.colors.starship_default)>}
-succes = "#ffb3b1" #{<rcol(data.colors.normal)>}
+time_bg = "#334b4f" # {<rcol(data.colors.starship_time_bg)>}
+time = "#cde7ec" # {<rcol(data.colors.starship_time)>}
+default_bg = "#004f58" # {<rcol(data.colors.starship_default_bg)>}
+default = "#9eeffd" # {<rcol(data.colors.starship_default)>}
+succes = "#82d3e1" #{<rcol(data.colors.normal)>}
 error = "#ffb4ab" #{<rcol(data.colors.critical)>}
 
 [directory]

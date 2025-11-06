@@ -36,17 +36,17 @@
    :spacing 10
    :halign "center"
    :space-evenly false
-   (
-    box
-    :width 100
-    (
-     scale
-     :class "test"
-     :min 0
-     :max 100
-     :hexpand true
-     )
-    )
+   ; (
+   ;  box
+   ;  :width 100
+   ;  (
+   ;   scale
+   ;   :class "test"
+   ;   :min 0
+   ;   :max 100
+   ;   :hexpand true
+   ;   )
+   ;  )
    )
   (
    box
