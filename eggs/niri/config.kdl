@@ -14,9 +14,9 @@ input {
   keyboard {
     xkb {
       // {% if data.school_mode %}
-      //<yolk> options "compose:caps"
+      options "compose:caps"
       // {% else %}
-      options "caps:escape_shifted_capslock,compose:ralt"
+      //<yolk> options "caps:escape_shifted_capslock,compose:ralt"
       // {% end %}
     }
   }
@@ -24,13 +24,13 @@ input {
   touchpad {
     tap
     natural-scroll
-    //<yolk> // dwt //{< if data.school_mode >}
+    // dwt //{< if data.school_mode >}
     tap-button-map "left-right-middle"
     drag-lock
   }
 
   mouse {
-    //accel-speed 0.5
+    // accel-speed 1.5
     accel-profile "flat"
   }
   trackpoint { }
@@ -88,18 +88,18 @@ layout {
   focus-ring {
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#82d3e1"
+    active-color "#bbc3ff"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#3f484a"
+    inactive-color "#46464f"
   }
 
   border {
     off
     width 4
     //{#rcol(data.colors.focused)#}
-    active-color "#82d3e1"
+    active-color "#bbc3ff"
     //{#rcol(data.colors.unfocused)#}
-    inactive-color "#3f484a"
+    inactive-color "#46464f"
   }
 
   shadow {
@@ -113,7 +113,7 @@ layout {
   struts { }
   insert-hint {
     //{#rcol(data.colors.focused + "80")#}
-    color "#82d3e180"
+    color "#bbc3ff80"
   }
 }
 
@@ -145,7 +145,7 @@ window-rule {
       //{#rcol(data.colors.screen_cast)#}
       active-color "#ffb4ab"
       //{#rcol(data.colors.screen_cast_unfocused)#}
-      inactive-color "#82d3e1"
+      inactive-color "#bbc3ff"
     }
 }
 

@@ -1,7 +1,7 @@
 import "colors" as colors;
 import "dynamic" as dynamic;
 
-let school_mode = false;
+let school_mode = true;
 let dynamic_colors = true;
 let dark_mode = true;
 let font = "JetBrainsMono Nerd Font Propo";
@@ -11,13 +11,16 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
+    //normal: "todo/planets.png",
+    //normal: "todo/bochi.jpeg",
     normal: "sakura.png",
-    school: "mc_pride.png",
+    school: "weeb.png",
     random: false,
 };
 
 export let data = #{
     dynamic_colors: dynamic_colors,
+    dark_mode: dark_mode,
     colors: if dynamic_colors && dark_mode {
         dynamic::dark
     } else if dynamic_colors && !dark_mode {
@@ -132,6 +135,11 @@ export let eggs = #{
         templates: ["*.css"],
         enabled: true,
     },
+    nvim: #{
+        targets: "~/.config/nvim",
+        //templates: 
+        enabled: true,
+    }
 };
 
 fn fetch_title() {

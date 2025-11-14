@@ -1,6 +1,6 @@
 # Background color
 #{#rcol(data.colors.background)#}
-color=#0e1415
+color=#131318
 #{-#rv(get_wallpaper_path("~"))#}
 #image=~/.config/share/wallpapers/weeb.png
 
@@ -11,20 +11,20 @@ layout-text-color=#e0def4
 
 # Text color
 #{#rcol(data.colors.normal)#}
-text-color=#82d3e1
+text-color=#bbc3ff
 #{#rcol(data.colors.low)#}
-text-clear-color=#b1cbd0
+text-clear-color=#c4c5dd
 #{#rcol(data.colors.critical)#}
 text-caps-lock-color=#ffb4ab
 #{#rcol(data.colors.high)#}
-text-ver-color=#bac6ea
+text-ver-color=#e6bad7
 #{#rcol(data.colors.error)#}
 text-wrong-color=#93000a
 
 # Highlight segments
 bs-hl-color=#19172466
 #{#rcol(data.colors.normal)#}
-key-hl-color=#82d3e1
+key-hl-color=#bbc3ff
 caps-lock-bs-hl-color=#19172466
 #{#rcol(data.colors.critical)#}
 caps-lock-key-hl-color=#ffb4ab
@@ -34,36 +34,36 @@ separator-color=#00000000
 
 # Inside of the indicator
 #{#rcol(data.colors.normal + "55")#}
-inside-color=#82d3e155
+inside-color=#bbc3ff55
 #{#rcol(data.colors.low + "55")#}
-inside-clear-color=#b1cbd055
+inside-clear-color=#c4c5dd55
 #{#rcol(data.colors.critical + "55")#}
 inside-caps-lock-color=#ffb4ab55
 #{#rcol(data.colors.high + "55")#}
-inside-ver-color=#bac6ea55
+inside-ver-color=#e6bad755
 #{#rcol(data.colors.error + "55")#}
 inside-wrong-color=#93000a55
 
 # Line between the inside and ring
 #{#rcol(data.colors.normal + "11")#}
-line-color=#82d3e111
+line-color=#bbc3ff11
 #{#rcol(data.colors.low + "11")#}
-line-clear-color=#b1cbd011
+line-clear-color=#c4c5dd11
 #{#rcol(data.colors.critical + "11")#}
 line-caps-lock-color=#ffb4ab11
 #{#rcol(data.colors.high + "11")#}
-line-ver-color=#bac6ea11
+line-ver-color=#e6bad711
 #{#rcol(data.colors.error + "11")#}
 line-wrong-color=#93000a11
 
 # Indicator ring
 #{#rcol(data.colors.normal + "aa")#}
-ring-color=#82d3e1aa
+ring-color=#bbc3ffaa
 #{#rcol(data.colors.low + "aa")#}
-ring-clear-color=#b1cbd0aa
+ring-clear-color=#c4c5ddaa
 #{#rcol(data.colors.critical + "aa")#}
 ring-caps-lock-color=#ffb4abaa
 #{#rcol(data.colors.high + "aa")#}
-ring-ver-color=#bac6eaaa
+ring-ver-color=#e6bad7aa
 #{#rcol(data.colors.error + "aa")#}
 ring-wrong-color=#93000aaa

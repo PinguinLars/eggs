@@ -1,81 +1,85 @@
-$background: #0e1415; // {<rcol(data.colors.background)>}
-$normal: #82d3e1; // {<rcol(data.colors.normal)>}
-$low: #b1cbd0; // {<rcol(data.colors.low)>}
-$high: #bac6ea; // {<rcol(data.colors.high)>}
+$background: #131318; // {<rcol(data.colors.background)>}
+$normal: #bbc3ff; // {<rcol(data.colors.normal)>}
+$low: #c4c5dd; // {<rcol(data.colors.low)>}
+$high: #e6bad7; // {<rcol(data.colors.high)>}
 $critical: #ffb4ab; // {<rcol(data.colors.critical)>}
-$focused: #334b4f; // {<rcol(data.colors.starship_time_bg)>} //TODO: chance name
 
 * {
   all: unset;
   font-size: 13px;
-}
-
-.widget {
-  background-color: $background;
-  border-radius: 10px;
+  font-family: "JetbrainsMono Nerd Font Propo";
 }
 
 tooltip {
-  background-color: $background;
+  background: rgba($background, 0.6);
+  color: $normal;
+  padding: 10px;
   border-radius: 10px;
-  margin: 0.75rem;
 }
 
 .bar {
-  background: none;
+  background: rgba($background, 0.4);
+  border-radius: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.bar-part {
+  margin-top: 3px;
+  margin-bottom: 3px;
   color: $normal;
 }
 
-.clock {
+.bar-element {
+  background: $background;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  &:hover {
+    background: $high;
+  }
+}
+
+.bar-element-left {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.bar-element-right {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.workspace {
+  color: $normal;
+  background: rgba($background, 0.6);
+  &:hover {
+    color: $background;
+    background: $normal;
+  }
+}
+
+.active-workspace {
+  color: $high;
+  background: $background;
+  &:hover {
+    color: $background;
+    background: $high;
+  }
+}
+
+.battery {
   color: $normal;
 }
 
-.battery-discharging {
-  color: $normal;
-}
-
-.system-critical {
-  color: $critical;
-}
-
-.battery-charging,
-.battery-charge {
+.battery-fully-charged, .battery-charging {
   color: $high;
 }
 
-calendar {
-  background-color: $background;
+.sound {
+  color: $low;
+}
+
+.sound-muted {
   color: $normal;
-  border: none;
-}
-
-calendar:selected {
-  color: $background;
-  background-color: $high;
-  border-radius: 10%;
-}
-
-.system-tray {
-  background-color: $background;
-  color: $normal;
-}
-
-.desktop-widgets {
-  background: none;
-}
-
-.desktop-widget {
-  background-color: $background;
-  border-radius: 16px;
-  padding: 12px;
-  color: $normal;
-}
-
-.desktop-app:hover {
-  background-color: $focused;
-  border-radius: 4px;
-}
-
-.test {
-  background-color: $background;
 }

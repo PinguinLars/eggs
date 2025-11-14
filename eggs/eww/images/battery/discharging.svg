@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <!--{#rcol(data.colors.normal)#}-->
-  <path d="M50 160 a20,20 0 0 0 20,20 L130 180 a20,20 0 0 0 20,-20 L150 60 a20,20 0 0 0 -20,-20 L125 40 L125 30 a10,10 0 0 0 -10,-10 L85 20 a10,10 0 0 0 -10,10 L75 40 L70 40 a20,20 0 0 0 -20,20 L50 160" fill="#82d3e1"  />
-</svg>
