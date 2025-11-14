@@ -139,6 +139,10 @@ export let eggs = #{
         targets: "~/.config/nvim",
         //templates: 
         enabled: true,
+    },
+    fish: #{
+        targets: "~/.config/fish",
+        enabled: true,
     }
 };
 
