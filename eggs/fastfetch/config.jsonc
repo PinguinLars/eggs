@@ -23,7 +23,7 @@
   },
   "modules": [
     // {#fetch_title()#}
-    "title",
+    {"type": "title","format": "{#bold_#bbc3ff}ashley{#}@{#bold_#bbc3ff}{host-name}"},
     "separator",
     "os",
     "host",

@@ -54,7 +54,7 @@ show_always = true
 style_user = "fg:default bg:default_bg"
 style_root = "fg:error bg:default_bg"
 format = "[󰧱 $user]($style)"
-#<yolk> aliases = { lars = "ashley" } # {< if !school_mode>}
+aliases = { lars = "ashley" } # {< if !school_mode>}
 
 [hostname]
 style = "fg:default bg:default_bg"

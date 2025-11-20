@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="144pt"
+    height="144pt"
+    viewBox="0 0 144 144">
+    <style>
+    #shape0 {
+      <!--{#rcol(data.colors.normal)#}-->
+      fill: #bbc3ff;
+      <!--{#rcol(data.colors.normal)#}-->
+      stroke: #bbc3ff;
+    }
+    #shape1, #shape2, #shape3, #shape4 {
+      <!--{#rcol(data.colors.normal)#}-->
+      stroke: #bbc3ff;
+    }
+    </style>
+<defs/>
+<path id="shape0" fill="#000000" fill-rule="evenodd" stroke="#000000" stroke-width="7.2" stroke-linecap="square" stroke-linejoin="bevel" d="M0 100.8L28.8 100.8L79.2 144L79.2 0L28.8 43.2L0 43.2L0 100.8" sodipodi:nodetypes="ccccccc"/>
+</svg>

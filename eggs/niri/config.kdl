@@ -14,9 +14,9 @@ input {
   keyboard {
     xkb {
       // {% if data.school_mode %}
-      options "compose:caps"
+      //<yolk> options "compose:caps"
       // {% else %}
-      //<yolk> options "caps:escape_shifted_capslock,compose:ralt"
+      options "caps:escape_shifted_capslock,compose:ralt"
       // {% end %}
     }
   }
@@ -24,7 +24,7 @@ input {
   touchpad {
     tap
     natural-scroll
-    // dwt //{< if data.school_mode >}
+    //<yolk> // dwt //{< if data.school_mode >}
     tap-button-map "left-right-middle"
     drag-lock
   }
@@ -50,7 +50,8 @@ spawn-at-startup "/usr/lib/xdg-desktop-portal-gtk"
 spawn-at-startup "/usr/lib/xdg-desktop-portal-gnome"
 spawn-at-startup "/usr/bin/xwayland-satellite"
 spawn-at-startup "/usr/bin/swww-daemon"
-spawn-at-startup "/usr/bin/waybar"
+// spawn-at-startup "/usr/bin/waybar"
+spawn-at-startup "eww" "open" "bar" "--arg" "padding=12"
 spawn-at-startup "/usr/bin/alacritty" "--daemon"
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
 
@@ -226,6 +227,7 @@ layer-rule {
 switch-events { lid-close { spawn "swaylock";}; }
 
 binds {
+  Mod+Menu { spawn-sh "makoctl mode -t dnd"; }
   Mod+Y { spawn "eww" "open" "desktop" "--toggle"; }
   Mod+G { spawn "flatpak" "run" "app.zen_browser.zen"; }
   Mod+Shift+G { spawn "vesktop"; }
@@ -236,16 +238,16 @@ binds {
   // Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
   Mod+E { spawn-sh "~/.config/share/scripts/reload.sh"; }
-  XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-  Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
-  Shift+XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-"; }
-  XF86AudioMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-  XF86AudioMicMute allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; } 
-  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "5%+"; } 
-  Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "1%+"; } 
-  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "5%-"; }
-  Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "1%-"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ && eww poll sound"; }
+  Shift+XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01+ && eww poll sound"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1- && eww poll sound"; }
+  Shift+XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01- && eww poll sound"; }
+  XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && eww poll sound_status"; }
+  XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && eww poll sound_status"; } 
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightnessctl s 5%+ && eww poll brightness"; } 
+  Shift+XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightnessctl s 1%+ && eww poll brightness"; } 
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl s 5%- && eww poll brightness"; }
+  Shift+XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl s 1%- && eww poll brightness"; }
   XF86AudioPlay { spawn "playerctl" "play-pause"; }
   Mod+Q { close-window ; }
   Mod+Left { focus-column-left ; }

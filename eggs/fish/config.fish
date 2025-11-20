@@ -11,10 +11,6 @@ function fish_user_key_bindings
     fish_vi_key_bindings --no-erase insert
 end
 
-function fish_greeting
-  shuf -n 1 ~/.randomquotes.txt 
-end
-
 function starship_transient_prompt_func
     starship module character
 end
@@ -34,3 +30,5 @@ end
 # pnpm end
 
 export PODMAN_COMPOSE_PROVIDER=/bin/podman-compose
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/lars/.ghcup/bin $PATH # ghcup-env

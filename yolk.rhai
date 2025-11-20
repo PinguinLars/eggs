@@ -1,7 +1,7 @@
 import "colors" as colors;
 import "dynamic" as dynamic;
 
-let school_mode = true;
+let school_mode = false;
 let dynamic_colors = true;
 let dark_mode = true;
 let font = "JetBrainsMono Nerd Font Propo";
@@ -14,6 +14,7 @@ let wallpaper = #{
     //normal: "todo/planets.png",
     //normal: "todo/bochi.jpeg",
     normal: "sakura.png",
+    //normal: "todo/arch_trans.png",
     school: "weeb.png",
     random: false,
 };

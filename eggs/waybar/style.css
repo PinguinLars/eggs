@@ -3,7 +3,7 @@
   /*{#rq(data.font)#}*/
   font-family: "JetBrainsMono Nerd Font Propo";
   font-size: 13px;
-  transition: 0.5s;
+  transition: none;
   margin-top: 1px;
 }
 
