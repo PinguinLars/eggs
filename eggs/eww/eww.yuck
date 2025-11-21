@@ -26,6 +26,8 @@
 (defvar power_menu_hoverd false)
 (defvar power_element_hoverd false)
 (defvar power_index 0)
+(defvar tuned_hoverd false)
+(defpoll tuned_profile :initial "throughput-performance" :interval "5s" `tuned-adm active | grep -o ':.*$' | grep -o '[a-z\-]*'`)
 
 (
  defwindow bar [padding] ;; is 12
@@ -115,6 +117,7 @@
       :class "power"
       :onhover `eww update power_element_hoverd=true`
       :onhoverlost `eww update power_element_hoverd=false`
+      :onclick `systemctl suspend`
       :width 25
       (
        image
@@ -128,6 +131,8 @@
      ;  :class "power"
      ;  :onhover `eww update power_element_hoverd=true`
      ;  :onhoverlost `eww update power_element_hoverd=false`
+     ;  :onclick `systemctl hibernate`
+     ;  :tooltip "hibernate"
      ;  :width 25
      ;  (
      ;   image
@@ -141,6 +146,8 @@
       :class "power"
       :onhover `eww update power_element_hoverd=true`
       :onhoverlost `eww update power_element_hoverd=false`
+      :onclick `niri msg action quit`
+      :tooltip "logout"
       :width 25
       (
        image
@@ -154,6 +161,8 @@
       :class "power"
       :onhover `eww update power_element_hoverd=true`
       :onhoverlost `eww update power_element_hoverd=false`
+      :onclickt `systemctl poweroff`
+      :tooltip "poweroff"
       :width 25
       (
        image
@@ -167,6 +176,8 @@
       :class "power"
       :onhover `eww update power_element_hoverd=true`
       :onhoverlost `eww update power_element_hoverd=false`
+      :onclick `systemctl reboot`
+      :tooltip "reboot"
       :width 25
       (
        image
@@ -180,6 +191,8 @@
       :class "power"
       :onhover `eww update power_element_hoverd=true`
       :onhoverlost `eww update power_element_hoverd=false`
+      :onclick `systemctl soft-reboot`
+      :tooltip "soft-reboot"
       :width 25
       (
        image
@@ -307,9 +320,19 @@ ${battery_status}"
      )
     )
    (
-    box
+    eventbox
     :class "bar-element tuned"
-    "tuned"
+    :onhover `eww update tuned_hoverd=true`
+    :onhoverlost `eww update tuned_hoverd=false`
+    :timeout "2s"
+    :onclick `scripts/tuned.fish && eww poll tuned_profile`
+    :width 30
+    (
+     image
+     :path "imgs/tuned/${tuned_profile}${tuned_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
     )
    (
     box
