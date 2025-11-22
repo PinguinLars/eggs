@@ -55,6 +55,10 @@ export let data = #{
 };
 
 export let eggs = #{
+    zellij: #{
+        targets: "~/.config/zellij",
+        enabled: true,
+    },
     hyfetch: #{
         targets: #{
             "hyfetch.json": "~/.config/hyfetch.json",
