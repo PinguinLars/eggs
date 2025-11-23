@@ -1,33 +1,21 @@
 ;; -*- mode: lisp -*-
 
-;-; this is going to be spagithi
 ;; lisp comments are amazing btw (and fortran also)
 
-(
- defpoll time 
- :interval "1s"
- `date +%H:%M`
- )
+(include "power.yuck")
+(include "tuned.yuck")
+(include "workspaces.yuck")
+(include "dnd.yuck")
+(include "sound.yuck")
+(include "brightness.yuck")
+(include "temps.yuck")
+(include "disk.yuck")
+(include "cpu.yuck")
+(include "ram.yuck")
+(include "battery.yuck")
 
-(deflisten active_workspace :initial "1" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '.[] | select (.output == "eDP-1") | select (.is_active) | .idx'; done`)
-(deflisten workspaces :initial "[]" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort'; done`)
-(deflisten last_workspace :initial "2" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort | .[-1]'; done`)
-(deflisten first_workspace :initial "1" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort | .[0]'; done`)
-(deflisten battery :initial "0" `upower -m | while read -r line; do upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | grep -o '[0-9]*'; done`)
-(deflisten battery_status :initial "discharging" `upower -m | while read -r line; do upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep "state" | sed -e "s/^[ ]*state\:[ ]*//"; done`)
-(defpoll sound :initial "100" :interval "0.5s" `wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -e 's/^Volume\\: //' -e 's/ \\[MUTED\\]$//'`)
-(defpoll sound_status :initial "" :interval "0.5s" `wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -e 's/^Volume\\: [0-9. ]*\\[//' -e 's/\\]$//'`)
-(defpoll brightness :initial "100" :interval "1s" `brightnessctl g -P`)
+(defpoll time :interval "1s" `date +%H:%M`)
 (defpoll date :interval "1s" `date "+%D %H:%M:%S"`)
-(defpoll wifi :interval "5s" `nmcli -t -f signal,device device wifi list | head -n 1 | cut -d: -f1`)
-(defpoll wifi_status :initial "none" :interval "5s" `nmcli networking connectivity`)
-(defvar dnd_hoverd false)
-(defpoll dnd :initial false :interval "1s" `if makoctl mode | grep dnd > /dev/null ; then echo "true"; else echo "false"; fi`)
-(defvar power_menu_hoverd false)
-(defvar power_element_hoverd false)
-(defvar power_index 0)
-(defvar tuned_hoverd false)
-(defpoll tuned_profile :initial "throughput-performance" :interval "5s" `tuned-adm active | grep -o ':.*$' | grep -o '[a-z\-]*'`)
 
 (
  defwindow bar [padding] ;; is 12
@@ -54,375 +42,58 @@
    :spacing 5
    :halign "start"
    :class "bar-part"
-   (
-    eventbox
-    :class "workspaces" ;; notice that this isn't a bar element
-    :tooltip "${active_workspace} ${first_workspace}-${last_workspace}"
-    (
-     box
-     :space-evenly false
-     :spacing 2
-     (
-      for workspace in workspaces (
-                                   eventbox
-                                   :onclick "niri msg action focus-workspace ${workspace}"
-                                   :class "workspace bar-element${workspace == last_workspace ? "" : ""}${workspace == first_workspace ? " bar-element-left": ""}${workspace == active_workspace ? " active-workspace" : ""}"
-                                   (
-                                    box
-                                    :width "25"
-                                    workspace
-                                    )
-                                   )
-      )
-     )
-    )
+   (workspaces) 
+   (power)
+   (tuned)
+   (dnd)
+   (systray :class "bar-element bar-element-right systray")
+   )
+  (
+   box
+   :space-evenly false
+   :spacing 5
+   :halign "center"
+   :class "bar-part"
+   (sound)
    (
     box
-    :class "bar-element power-menu"
-    (
-     eventbox
-     :class "power"
-     :onhover `eww update power_menu_hoverd=true`
-     :onhoverlost `eww update power_menu_hoverd=false`
-     :onclick `eww update power_index=${power_index < 5 ? power_index + 1 : 0}`
-     :onrightclick `eww update power_index=${power_index > 2 ? power_index - 1 : 5 }`
-     :width 25
-     (
-      image
-      :path "imgs/power/group${power_menu_hoverd ? "-bg" : ""}.svg"
-      :image-width 20
-      :image-height 20
-      )
-     )
-    (
-     stack
-     :selected power_index
-     :transition "none"
-     (
-      eventbox
-      :class "power"
-      :onhover `eww update power_element_hoverd=true`
-      :onhoverlost `eww update power_element_hoverd=false`
-      :onclick "swaylock -f"
-      :width 25
-      (
-       image
-       :path "imgs/power/lock${power_element_hoverd ? "-bg" : ""}.svg"
-       :image-width 20
-       :image-height 20
-       )
-      )
-     (
-      eventbox
-      :class "power"
-      :onhover `eww update power_element_hoverd=true`
-      :onhoverlost `eww update power_element_hoverd=false`
-      :onclick `systemctl suspend`
-      :width 25
-      (
-       image
-       :path "imgs/power/suspend${power_element_hoverd ? "-bg" : ""}.svg"
-       :image-width 20
-       :image-height 20
-       )
-      )
-     ; ( ;; suspend to disk
-     ;  eventbox
-     ;  :class "power"
-     ;  :onhover `eww update power_element_hoverd=true`
-     ;  :onhoverlost `eww update power_element_hoverd=false`
-     ;  :onclick `systemctl hibernate`
-     ;  :tooltip "hibernate"
-     ;  :width 25
-     ;  (
-     ;   image
-     ;   :path "imgs/power/hibernate${power_element_hoverd ? "-bg" : ""}.svg"
-     ;   :image-width 20
-     ;   :image-height 20
-     ;   )
-     ;  )
-     (
-      eventbox
-      :class "power"
-      :onhover `eww update power_element_hoverd=true`
-      :onhoverlost `eww update power_element_hoverd=false`
-      :onclick `niri msg action quit`
-      :tooltip "logout"
-      :width 25
-      (
-       image
-       :path "imgs/power/logout${power_element_hoverd ? "-bg" : ""}.svg"
-       :image-width 20
-       :image-height 20
-       )
-      )
-     (
-      eventbox
-      :class "power"
-      :onhover `eww update power_element_hoverd=true`
-      :onhoverlost `eww update power_element_hoverd=false`
-      :onclickt `systemctl poweroff`
-      :tooltip "poweroff"
-      :width 25
-      (
-       image
-       :path "imgs/power/off${power_element_hoverd ? "-bg" : ""}.svg"
-       :image-width 20
-       :image-height 20
-       )
-      )
-     (
-      eventbox
-      :class "power"
-      :onhover `eww update power_element_hoverd=true`
-      :onhoverlost `eww update power_element_hoverd=false`
-      :onclick `systemctl reboot`
-      :tooltip "reboot"
-      :width 25
-      (
-       image
-       :path "imgs/power/reboot${power_element_hoverd ? "-bg" : ""}.svg"
-       :image-width 20
-       :image-height 20
-       )
-      )
-     (
-      eventbox
-      :class "power"
-      :onhover `eww update power_element_hoverd=true`
-      :onhoverlost `eww update power_element_hoverd=false`
-      :onclick `systemctl soft-reboot`
-      :tooltip "soft-reboot"
-      :width 25
-      (
-       image
-       :path "imgs/power/soft-reboot${power_element_hoverd ? "-bg" : ""}.svg"
-       :image-width 20
-       :image-height 20
-       )
-      )
-)
-)
-(
- eventbox
- :class "bar-element tuned"
- :onhover `eww update tuned_hoverd=true`
- :onhoverlost `eww update tuned_hoverd=false`
- :timeout "2s"
- :onclick `scripts/tuned.fish && eww poll tuned_profile`
- :width 30
- (
-  image
-  :path "imgs/tuned/${tuned_profile}${tuned_hoverd ? "-bg" : ""}.svg"
-  :image-width 20
-  :image-height 20
-  )
- )
-(
- eventbox
- :class "bar-element dnd"
- :onhover `eww update dnd_hoverd=true`
- :onhoverlost `eww update dnd_hoverd=false`
- :onclick `makoctl mode -t dnd && eww poll dnd > /dev/null` ; to not spam the logs
- :width 30
- (
-  image
-  :path "imgs/dnd/${dnd ? "on" : "off"}${dnd_hoverd ? "-bg" : ""}.svg"
-  :image-width 20
-  :image-height 20
-  )
- )
-(systray :class "bar-element bar-element-right systray")
-)
-(
- box
- :space-evenly false
- :spacing 5
- :halign "center"
- :class "bar-part"
- (
-  box
-  :class "bar-element-left bar-element sound${sound_status == "MUTED" ? " sound-muted" : ""}"
-  :width 50
-  :tooltip "${sound * 100}%"
-  (
-   circular-progress
-   :value "${sound * 100}"
-   :thickness 3
-   (
-    image
-    :path "imgs/sound/${sound_status == "MUTED" ? "mute" : (sound < 0.33 ? "low" : (sound < 0.66 ? "mid" : "high"))}.svg"
-    :image-width 20
-    :image-height 20
+    :class "bar-element clock"
+    :tooltip date
+    "${time}"
     )
+   (brightness)
    )
-  )
- (
-  box
-  :class "bar-element clock"
-  :tooltip date
-  "${time}"
-  )
- ; (
- ;  box
- ;  :class "bar-element network"
- ;  :width 50
- ;  ; :tooltip "ssid here" ;;TODO!
- ;  (
- ;   circular-progress
- ;   :value "${wifi ?: 0}"
- ;   :thickness 3
- ;   (
- ;    image
- ;    :path "imgs/net/${wifi_status}.svg"
- ;    :image-width 20
- ;    :image-height 20
- ;    )
- ;   )
- ;  )
- ; (
- ;  box
- ;  :class "bar-element-right bar-element bluetooth"
- ;  :width 50
- ;  :tooltip "bluetooth"
- ;  (
- ;   image
- ;   :path "imgs/bluetooth.svg"
- ;   :image-width 20
- ;   :image-height 20
- ;   )
- ;  )
- (
-  box
-  :class "bar-element-right bar-element brightness"
-  :width 50
-  :tooltip "${brightness}%"
   (
-   circular-progress
-   :value brightness
-   :thickness 3
-   (
-    image
-    :path "imgs/brightness/${round(brightness * 6 / 100 + 1, 0)}.svg"
-    :image-width 20
-    :image-height 20
-    )
+   box
+   :space-evenly false
+   :spacing 5
+   :halign "end"
+   :class "bar-part"
+   (battery)
+   (temps)
+   (cpu)
+   (ram)
+   (disk)
    )
   )
  )
-(
- box
- :space-evenly false
- :spacing 5
- :halign "end"
- :class "bar-part"
- (
-  box
-  :class "bar-element bar-element-left battery battery-${battery_status}"
-  :width 50
-  :tooltip "${battery}%
-           ${battery_status}"
-  (
-   circular-progress
-   :value battery
-   :thickness 3
-   (
-    image
-    :path "imgs/battery/${battery_status == "discharging" && battery <= 15 ? "empty" : battery_status}.svg"
-    :image-width 20
-    :image-height 20
-    )
-   )
-  )
- (
-  box
-  :class "bar-element temps"
-  :width 50
-  :tooltip "${EWW_TEMPS.DELL_DDV_CPU}°C"
-  (
-   circular-progress
-   :value "${EWW_TEMPS.DELL_DDV_CPU}"
-   :thickness 3
-   (
-    image
-    :path "imgs/temp/normal.svg"
-    :image-width 20
-    :image-height 20
-    )
-   )
-  )
- (
-  box
-  :class "bar-element cpu"
-  :tooltip "Total: ${round(EWW_CPU.avg,0)}%
-           core0: ${EWW_CPU.cores[0].usage}%
-           core1: ${EWW_CPU.cores[1].usage}%
-           core2: ${EWW_CPU.cores[2].usage}%
-           core3: ${EWW_CPU.cores[3].usage}%"
-  :width 50
-  (
-   circular-progress
-   :value "${EWW_CPU.avg}"
-   :thickness 3
-   (
-    image
-    :path "imgs/cpu.svg"
-    :image-width 20
-    :image-height 20
-    )
-   )
-  )
- (
-  box
-  :class "bar-element ram"
-  :tooltip "${formatbytes(round(EWW_RAM.used_mem, 0))} / ${formatbytes(round(EWW_RAM.total_mem, 0))}
-  ${formatbytes(round(EWW_RAM.total_swap - EWW_RAM.free_swap, 0))} / ${formatbytes(round(EWW_RAM.total_swap, 0))}"
-  :width 50
-  (
-   circular-progress
-   :value "${EWW_RAM.used_mem_perc}"
-   :thickness 3
-   (
-    image
-    :path "imgs/ram.svg"
-    :image-width 20
-    :image-height 20
-    )
-   )
-  )
- (
-  box
-  :class "bar-element bar-element-right disk"
-  :tooltip "${formatbytes(round(EWW_DISK["/"].used, 0))} / ${formatbytes(round(EWW_DISK["/"].total, 0))}"
-  :width 50
-  (
-   circular-progress
-   :value "${EWW_DISK["/"].used_perc}"
-   :thickness 3
-   (
-    image
-    :path "imgs/disk.svg"
-    :image-width 20
-    :image-height 20
-    )
-   )
-  )
- )
-)
-)
 
 (
  defwindow test
  :monitor 0 
- :geometry (geometry
-             ; :width "90%"
-             :height "30px"
-             :anchor "left center")
+ :geometry
+ (
+  geometry
+  ; :width "90%"
+  :height "30px"
+  :anchor "left center"
+  )
  :stacking "fg"
  :reserve (struts :distance "40px" :side "top")
  :windowtype "dock"
- (box
-   :class "dock"
-   "hi"
-   )
+ (
+  box
+  :class "dock"
+  "hi"
+  )
  )

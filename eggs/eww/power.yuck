@@ -1,0 +1,137 @@
+;; -*- mode: lisp -*-
+
+(defvar power_menu_hoverd false)
+(defvar power_element_hoverd false)
+(defvar power_index 0)
+
+
+(
+ defwidget power[]
+ (
+  box
+  :class "bar-element power-menu"
+  (
+   eventbox
+   :class "power"
+   :onhover `eww update power_menu_hoverd=true`
+   :onhoverlost `eww update power_menu_hoverd=false`
+   :onclick `eww update power_index=${power_index < 5 ? power_index + 1 : 0}`
+   :onrightclick `eww update power_index=${power_index > 2 ? power_index - 1 : 5 }`
+   :width 25
+   (
+    image
+    :path "imgs/power/group${power_menu_hoverd ? "-bg" : ""}.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  (
+   stack
+   :selected power_index
+   :transition "none"
+   (
+    eventbox
+    :class "power"
+    :onhover `eww update power_element_hoverd=true`
+    :onhoverlost `eww update power_element_hoverd=false`
+    :onclick "swaylock -f"
+    :width 25
+    (
+     image
+     :path "imgs/power/lock${power_element_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   (
+    eventbox
+    :class "power"
+    :onhover `eww update power_element_hoverd=true`
+    :onhoverlost `eww update power_element_hoverd=false`
+    :onclick `systemctl suspend`
+    :width 25
+    (
+     image
+     :path "imgs/power/suspend${power_element_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   ; ( ;; suspend to disk
+   ;  eventbox
+   ;  :class "power"
+   ;  :onhover `eww update power_element_hoverd=true`
+   ;  :onhoverlost `eww update power_element_hoverd=false`
+   ;  :onclick `systemctl hibernate`
+   ;  :tooltip "hibernate"
+   ;  :width 25
+   ;  (
+   ;   image
+   ;   :path "imgs/power/hibernate${power_element_hoverd ? "-bg" : ""}.svg"
+   ;   :image-width 20
+   ;   :image-height 20
+   ;   )
+   ;  )
+   (
+    eventbox
+    :class "power"
+    :onhover `eww update power_element_hoverd=true`
+    :onhoverlost `eww update power_element_hoverd=false`
+    :onclick `niri msg action quit`
+    :tooltip "logout"
+    :width 25
+    (
+     image
+     :path "imgs/power/logout${power_element_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   (
+    eventbox
+    :class "power"
+    :onhover `eww update power_element_hoverd=true`
+    :onhoverlost `eww update power_element_hoverd=false`
+    :onclickt `systemctl poweroff`
+    :tooltip "poweroff"
+    :width 25
+    (
+     image
+     :path "imgs/power/off${power_element_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   (
+    eventbox
+    :class "power"
+    :onhover `eww update power_element_hoverd=true`
+    :onhoverlost `eww update power_element_hoverd=false`
+    :onclick `systemctl reboot`
+    :tooltip "reboot"
+    :width 25
+    (
+     image
+     :path "imgs/power/reboot${power_element_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   (
+    eventbox
+    :class "power"
+    :onhover `eww update power_element_hoverd=true`
+    :onhoverlost `eww update power_element_hoverd=false`
+    :onclick `systemctl soft-reboot`
+    :tooltip "soft-reboot"
+    :width 25
+    (
+     image
+     :path "imgs/power/soft-reboot${power_element_hoverd ? "-bg" : ""}.svg"
+     :image-width 20
+     :image-height 20
+     )
+    )
+   )
+ )
+)

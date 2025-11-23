@@ -1,0 +1,29 @@
+layout {
+  new_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane {
+      children
+    }
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  tab name="nvim" {
+    pane size=1 borderless=true {
+      plugin location="zellij:compact-bar"
+    }
+    pane command="nvim" borderless=true
+  }
+  tab name="shell" {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    pane
+    pane size=1 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  
+}

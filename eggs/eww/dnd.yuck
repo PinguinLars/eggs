@@ -1,0 +1,23 @@
+;; -*- mode: lisp -*-
+
+(defvar dnd_hoverd false)
+(defpoll dnd :initial false :interval "1s" `if makoctl mode | grep dnd > /dev/null ; then echo "true"; else echo "false"; fi`)
+
+
+(
+ defwidget dnd[]
+ (
+  eventbox
+  :class "bar-element dnd"
+  :onhover `eww update dnd_hoverd=true`
+  :onhoverlost `eww update dnd_hoverd=false`
+  :onclick `makoctl mode -t dnd && eww poll dnd > /dev/null` ; to not spam the logs
+  :width 30
+  (
+   image
+   :path "imgs/dnd/${dnd ? "on" : "off"}${dnd_hoverd ? "-bg" : ""}.svg"
+   :image-width 20
+   :image-height 20
+   )
+  )
+ )

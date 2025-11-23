@@ -1,0 +1,22 @@
+;; -*- mode: lisp -*-
+
+(
+ defwidget disk[]
+ (
+  box
+  :class "bar-element bar-element-right disk"
+  :tooltip "${formatbytes(round(EWW_DISK["/"].used, 0))} / ${formatbytes(round(EWW_DISK["/"].total, 0))}"
+  :width 50
+  (
+   circular-progress
+   :value "${EWW_DISK["/"].used_perc}"
+   :thickness 3
+   (
+    image
+    :path "imgs/disk.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  )
+ )

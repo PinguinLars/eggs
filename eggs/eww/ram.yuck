@@ -1,0 +1,23 @@
+;; -*- mode: lisp -*-
+
+(
+ defwidget ram[]
+ (
+  box
+  :class "bar-element ram"
+  :tooltip "${formatbytes(round(EWW_RAM.used_mem, 0))} / ${formatbytes(round(EWW_RAM.total_mem, 0))}
+  ${formatbytes(round(EWW_RAM.total_swap - EWW_RAM.free_swap, 0))} / ${formatbytes(round(EWW_RAM.total_swap, 0))}"
+  :width 50
+  (
+   circular-progress
+   :value "${EWW_RAM.used_mem_perc}"
+   :thickness 3
+   (
+    image
+    :path "imgs/ram.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  )
+ )

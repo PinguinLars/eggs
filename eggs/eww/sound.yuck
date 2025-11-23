@@ -1,0 +1,25 @@
+;; -*- mode: lisp -*-
+
+(defpoll sound :initial "100" :interval "0.5s" `wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -e 's/^Volume\\: //' -e 's/ \\[MUTED\\]$//'`)
+(defpoll sound_status :initial "" :interval "0.5s" `wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -e 's/^Volume\\: [0-9. ]*\\[//' -e 's/\\]$//'`)
+
+(
+ defwidget sound[]
+ (
+  box
+  :class "bar-element-left bar-element sound${sound_status == "MUTED" ? " sound-muted" : ""}"
+  :width 50
+  :tooltip "${sound * 100}%"
+  (
+   circular-progress
+   :value "${sound * 100}"
+   :thickness 3
+   (
+    image
+    :path "imgs/sound/${sound_status == "MUTED" ? "mute" : (sound < 0.33 ? "low" : (sound < 0.66 ? "mid" : "high"))}.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  )
+ )

@@ -1,0 +1,26 @@
+;; -*- mode: lisp -*-
+
+(
+ defwidget cpu[]
+ (
+  box
+  :class "bar-element cpu"
+  :tooltip "Total: ${round(EWW_CPU.avg,0)}%
+core0: ${EWW_CPU.cores[0].usage}%
+core1: ${EWW_CPU.cores[1].usage}%
+core2: ${EWW_CPU.cores[2].usage}%
+core3: ${EWW_CPU.cores[3].usage}%"
+  :width 50
+  (
+   circular-progress
+   :value "${EWW_CPU.avg}"
+   :thickness 3
+   (
+    image
+    :path "imgs/cpu.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  )
+ )

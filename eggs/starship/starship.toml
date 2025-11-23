@@ -5,6 +5,11 @@ format = """
 $directory\
 $status\
 $fill\
+$git_branch\
+$git_commit\
+$git_status\
+$git_metrics\
+$fill\
 $c\
 $cpp\
 $cmake\
@@ -78,6 +83,31 @@ pipestatus_format = "$pipestatus [=>](default) [](default_bg)[$symbol$status]
 [fill]
 symbol = ' '
 
+[git_branch]
+format = '[](default_bg)[$symbol$branch(:$remote_branch)]($style)'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
+# [git_commit]
+
+[git_metrics]
+disabled = false
+format = '[(+$added -$deleted)](fg:default bg:default_bg)[](default_bg)'
+
+[git_status]
+format = '[( $all_status$ahead_behind )]($style)'
+style = 'fg:default bg:default_bg'
+conflicted = '=$count'
+ahead = '⇡$count'
+behind = '⇣$count'
+diverged = '⇕$ahead_count|$behind_count'
+up_to_date = ''
+untracked = '?$count'
+stashed = '\$$count'
+modified = '!$count'
+staged = '+$count'
+renamed = '»$count'
+deleted = '✘$count'
 
 #: langs
 

@@ -1,0 +1,22 @@
+;; -*- mode: lisp -*-
+
+(
+ defwidget temps[]
+ (
+  box
+  :class "bar-element temps"
+  :width 50
+  :tooltip "${EWW_TEMPS.DELL_DDV_CPU}°C"
+  (
+   circular-progress
+   :value "${EWW_TEMPS.DELL_DDV_CPU}"
+   :thickness 3
+   (
+    image
+    :path "imgs/temp/normal.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  )
+ )

@@ -1,0 +1,23 @@
+;; -*- mode: lisp -*-
+
+(defvar tuned_hoverd false)
+(defpoll tuned_profile :initial "throughput-performance" :interval "5s" `tuned-adm active | grep -o ':.*$' | grep -o '[a-z\-]*'`)
+
+(
+ defwidget tuned[]
+ (
+  eventbox
+  :class "bar-element tuned"
+  :onhover `eww update tuned_hoverd=true`
+  :onhoverlost `eww update tuned_hoverd=false`
+  :timeout "2s"
+  :onclick `scripts/tuned.fish && eww poll tuned_profile`
+  :width 30
+  (
+   image
+   :path "imgs/tuned/${tuned_profile}${tuned_hoverd ? "-bg" : ""}.svg"
+   :image-width 20
+   :image-height 20
+   )
+  )
+ )
