@@ -1,15 +1,3 @@
-workspace "browser" {
-  open-on-output "eDP-1"
-}
-
-workspace "dev" {
-  open-on-output "eDP-1" 
-}
-
-workspace "games" { 
-  open-on-output "eDP-1" 
-}
-
 input {
   keyboard {
     xkb {
@@ -151,46 +139,8 @@ window-rule {
 }
 
 window-rule {
-  match app-id=r#"org.mozilla.firefox"#
-  open-on-workspace "browser"
-}
-
-window-rule {
   match app-id=r#"vesktop"#
-  open-on-workspace "browser"
   block-out-from "screen-capture"
-}
-
-window-rule {
-  match app-id=r#"jetbrains"#
-  open-on-workspace "dev"
-}
-
-window-rule {
-  match app-id=r#"kitty"#
-  open-on-workspace "dev"
-}
-
-window-rule {
-  match app-id=r#"Alacritty"#
-  open-on-workspace "dev"
-}
-
-window-rule {
-  match app-id=r#"osu!"#
-  open-on-workspace "games"
-  open-maximized true
-  open-fullscreen false
-}
-
-window-rule {
-  match app-id=r#"modrinth-app-wrapped"#
-  open-on-workspace "games"
-}
-
-window-rule {
-  match app-id=r#"[Mm]inecraft"#
-  open-on-workspace "games"
 }
 
 window-rule {

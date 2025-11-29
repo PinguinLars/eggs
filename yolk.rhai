@@ -148,7 +148,11 @@ export let eggs = #{
     fish: #{
         targets: "~/.config/fish",
         enabled: true,
-    }
+    },
+    kmonad: #{
+        targets: "~/.config/kmonad",
+        enabled: true,
+    },
 };
 
 fn fetch_title() {

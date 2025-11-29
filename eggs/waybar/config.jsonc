@@ -1,316 +1,50 @@
-[
-  {
-    "name": "main",
-    "layer": "top",
-    "position": "top",
-    "output": "eDP-1",
-    "include": [
-      "~/.config/waybar/shared.jsonc"
-    ],
-    "modules-left": [
-      "niri/workspaces",
-      //gives errors/warnings that you can ignore (or comment it out)
-      "hyprland/workspaces",
-      "clock",
-      "privacy"
-    ],
-    "modules-center": [
-      // "group/window"
-      "mpris"
-    ],
-    "modules-right": [
-      "systemd-failed-units",
-      "pulseaudio",
-      "backlight",
-      "group/group-network",
-      "group/group-power",
-      "power-profiles-daemon",
-      "group/group-hardware"
-    ],
-    "clock": {
-      "actions": {
-        "on-click": "mode",
-        "on-click-right": "mode"
-      },
-      "calendar": {
-        "format": {
-          //{#rcol(data.colors.calendar_days)#}
-          "days": "<span color='#c4c5dd'><b>{}</b></span>",
-          //{#rcol(data.colors.calendar_months)#}
-          "months": "<span color='#bbc3ff'><b>{}</b></span>",
-          //{#rcol(data.colors.calendar_today)#}
-          "today": "<span color='#e6bad7'><b><u>{}</u></b></span>",
-          //{#rcol(data.colors.calendar_weekdays)#}
-          "weekdays": "<span color='#bbc3ff'><b>{}</b></span>",
-          //{#rcol(data.colors.calendar_weeks)#}
-          "weeks": "<span color='#e6bad7'><b>W{}</b></span>"
-        },
-        "mode": "month",
-        "mode-mon-col": 3,
-        "on-scroll": 1,
-        "weeks-pos": "left"
-      },
-      //The L is needed
-      "format": "󰅐 {:L%H:%M}",
-      "local": "nl_NL.utf8",
-      //Displays the clock tooltip in Dutch
-      "tooltip-alt": "{:L%a %d %b %H:%M}",
-      "tooltip-format": "<tt><small>{calendar}</small></tt>"
+{
+  "layer": "top",
+  "modules-left": [
+    "niri/workspaces",
+    "custom/power",
+    "power-profiles-daemon",
+    "tray",
+  ],
+  "modules-center": [
+    "pulseaudio",
+    "clock",
+    "backlight",
+  ],
+  "modules-right": [
+    "systemd-failed-units",
+    "battery",
+    "temperature",
+    "cpu",
+    "memory",
+    "disk",
+  ],
+  "niri/workspaces": {},
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/power_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "logout": "niri msg action quit",
+      "lock": "swaylock -f",
     },
-    "network": {
-      "format-disabled": "󰰰",
-      "format-disconnected": "󰤮",
-      "format-ethernet": "󱎔",
-      "format-icons": [
-        "󰤯",
-        "󰤟",
-        "󰤢",
-        "󰤥",
-        "󰤨"
-      ],
-      "format-linked": "󰤫",
-      "format-wifi": "{icon}",
-      "tooltip": true,
-      "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-      "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-      "tooltip-format-ethernet": "{ifname} ",
-      "tooltip-format-disconnected": "Disconnected"
-    },
-    "battery": {
-      "adapter": "AC",
-      "bat": "BAT0",
-      "format": "{icon}",
-      "format-icons": [
-        "󰁺",
-        "󰁻",
-        "󰁼",
-        "󰁽",
-        "󰁾",
-        "󰁿",
-        "󰂀",
-        "󰂁",
-        "󰂂",
-        "󰁹"
-      ],
-      "format-critical": "󱉞 ",
-      "format-low": "󱃍 ",
-      "format-warning": "󱟥",
-      "states": {
-        "critical": 10,
-        "low": 20,
-        "warning": 30,
-        "forty": 40,
-        "fifty": 50,
-        "sixty": 60,
-        "seventy": 70,
-        "eighty": 80,
-        "ninety": 90,
-        "hundred": 100
-      },
-      "format-charging-critical": "󰢜",
-      "format-charging-low": "󰂆",
-      "format-charging-warning": "󰂇",
-      "format-charging-forty": "󰂈",
-      "format-charging-fifty": "󰢝",
-      "format-charging-sixty": "󰂉",
-      "format-charging-seventy": "󰢞",
-      "format-charging-eighty": "󰂊",
-      "format-charging-ninety": "󰂋",
-      "format-charging-hundred": "󰂅",
-      "format-full": "󰂅",
-      "tooltip-format": "{timeTo}\n{capacity}% full\n{power}w\n{health}% health"
-    },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
-    "systemd-failed-units": {
-      "hide-on-ok": false,
-      "format": "{nr_failed}",
-      "format-ok": "✓"
-    },
-    "pulseaudio": {
-      "format": "{icon} {volume}%",
-      "format-muted": "󰖁",
-      "format-icons": {
-        "headphone": "",
-        "phone": "",
-        "phone-muted": "",
-        "portable": "",
-        "car": "",
-        "default": [
-          "󰕿",
-          "󰖀",
-          "󰕾"
-        ]
-      },
-      "scroll-step": 1,
-      "tooltip-format": "Volume at {volume}%\n{desc}",
-      "on-click": "amixer set Master toggle"
-    },
-    "bluetooth": {
-      "format-disabled": "󰂲",
-      "format-connected": "󰂱",
-      "format-on": "󰂯"
-      //TODO: added tooltip
-    },
-    "backlight": {
-      "device": "intel_backlight",
-      "format": "{icon}",
-      "tooltip-format": "At {percent}%",
-      "format-icons": [
-        "󰃚",
-        "󰃛",
-        "󰃜",
-        "󰃝",
-        "󰃞",
-        "󰃟",
-        "󰃠"
-      ],
-      "tooltip": true
-    },
-    "group/group-power": {
-      "orientation": "inherit",
-      "modules": [
-        "custom/lock",
-        "custom/power",
-        "custom/reboot",
-        "custom/quit",
-        "custom/suspend"
-      ],
-      "drawer": {
-        "transition-duration": 500,
-        "transition-left-to-right": false
-      }
-    },
-    "custom/lock": {
-      "format": "󰍁",
-      "tooltip": true,
-      "on-click": "swaylock",
-      "tooltip-format": "Lock current session"
-    },
-    "custom/suspend": {
-      "format": "󱤴",
-      "tooltip": true,
-      "on-click": "systemctl suspend",
-      "tooltip-format": "Suspend session (to ram)"
-    },
-    "custom/quit": {
-      "format": "󰗼",
-      "tooltip": true,
-      "tooltip-format": "Quit session",
-      "on-click": "niri msg action quit"
-    },
-    "custom/reboot": {
-      "format": "󰜉",
-      "tooltip": true,
-      "on-click": "systemctl reboot",
-      "tooltip-format": "Reboot system"
-    },
-    "custom/power": {
-      "format": "󰤆",
-      "tooltip": true,
-      "on-click": "systemctl poweroff",
-      "tooltip-format": "Poweroff system"
-    },
-    "group/group-hardware": {
-      "drawer": {
-        "transition-duration": 1000,
-        "transition-left-to-right": false
-      },
-      "orientation": "inherit",
-      "modules": [
-        "battery",
-        "user",
-        "cpu",
-        "memory",
-        "disk",
-        "temperature"
-      ]
-    },
-    "group/group-network": {
-      "drawer": {
-        "transition-duration": 400,
-        "transition-left-to-right": false
-      },
-      "orientation": "inherit",
-      "modules": [
-        "network",
-        "bluetooth"
-      ]
-    },
-    "user": {
-      "format": " {work_H}h",
-      "open-on-click": false
-    },
-    "cpu": {
-      "format": " {usage}%"
-    },
-    "memory": {
-      "format": " {used:0.1f}+{swapUsed:0.1f}G",
-      "tooltip-format": "{used:0.1f}GiB used\n{swapUsed:0.1f}GiB swap used"
-    },
-    "disk": {
-      "format": " {percentage_used}%"
-    },
-    "load": {
-      "interval": 10,
-      "format": "{load5}"
-    },
-    "temperature": {
-      "thermal-zone": 6,
-      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-      "critical-threshold": 80,
-      "format-critical": " {temperatureC}°C",
-      "format": " {temperatureC}°C"
-    },
-    "group/window": {
-      "drawer": {
-        "transition-duration": 500,
-        "transition-left-to-right": true
-      },
-      "orientation": "inherit",
-      "modules": [
-        "niri/window",
-        "wlr/taskbar"
-      ]
-    },
-    "mpris": {
-      "format":"{dynamic}",
-      "dynamic-order": [
-        "title",
-        "artist"
-      ],
-      "dynamic-importance-order":[
-        "title",
-        "artist"
-      ],
-      "dynamic-len": 75
-    }
   },
-  {
-    "name": "taskbar",
-    "layer": "top",
-    "position": "top",
-    "output": "!eDP-1",
-    "include": [
-      "~/.config/waybar/shared.jsonc"
-    ],
-    "modules-left": [
-      "niri/workspaces",
-      //gives errors/warnings that you can ignore (or comment it out)
-      "hyprland/workspaces",
-      "privacy"
-    ],
-    "modules-center": [],
-    "modules-right": [
-      "wlr/taskbar"
-    ]
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
+    },
+  },
+  "tray": {
+    "show-passive-items": true,
+    "icon-size": 23
   }
-]
+}
