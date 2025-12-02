@@ -4,7 +4,7 @@
  defwidget disk[]
  (
   box
-  :class "bar-element bar-element-right disk"
+  :class "bar-element disk"
   :tooltip "${formatbytes(round(EWW_DISK["/"].used, 0))} / ${formatbytes(round(EWW_DISK["/"].total, 0))}"
   :width 50
   (

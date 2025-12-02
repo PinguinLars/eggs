@@ -92,7 +92,7 @@
     :class "power"
     :onhover `eww update power_element_hoverd=true`
     :onhoverlost `eww update power_element_hoverd=false`
-    :onclickt `systemctl poweroff`
+    :onclick `systemctl poweroff`
     :tooltip "poweroff"
     :width 25
     (

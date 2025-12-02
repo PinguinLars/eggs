@@ -2,25 +2,23 @@
 
 (deflisten active_workspace :initial "1" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '.[] | select (.output == "eDP-1") | select (.is_active) | .idx'; done`)
 (deflisten workspaces :initial "[]" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort'; done`)
-(deflisten last_workspace :initial "2" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort | .[-1]'; done`)
-(deflisten first_workspace :initial "1" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort | .[0]'; done`)
 
 (
  defwidget workspaces[]
  (
   eventbox
   :class "workspaces" ;; notice that this isn't a bar element
-  :tooltip "${active_workspace} ${first_workspace}-${last_workspace}"
+  :tooltip "${active_workspace}"
   (
    box
    :space-evenly false
-   :spacing 2
+   :spacing 5
    (
     for workspace in workspaces
     (
      eventbox
      :onclick "niri msg action focus-workspace ${workspace}"
-     :class "workspace bar-element${workspace == last_workspace ? "" : ""}${workspace == first_workspace ? " bar-element-left": ""}${workspace == active_workspace ? " active-workspace" : ""}"
+     :class "workspace bar-element${workspace == active_workspace ? " active-workspace" : ""}"
      (
       box
       :width "25"

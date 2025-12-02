@@ -13,6 +13,7 @@
 (include "cpu.yuck")
 (include "ram.yuck")
 (include "battery.yuck")
+(include "player.yuck")
 
 (defpoll time :interval "1s" `date +%H:%M`)
 (defpoll date :interval "1s" `date "+%D %H:%M:%S"`)
@@ -24,8 +25,9 @@
  (
   geometry
   :x "0%"
-  :y "${padding}px"
-  :width "${1366-padding*2}px" ;; is my monitor width
+  ; :y "${padding}px"
+  ; :width "${1366-padding*2}px" ;; is my monitor width
+  :width "1366"
   :height "40px"
   :anchor "top center"
   )
@@ -46,7 +48,8 @@
    (power)
    (tuned)
    (dnd)
-   (systray :class "bar-element bar-element-right systray")
+   (systray :class "bar-element systray${(song_status == "Stopped" || (current_song_name == "None" && current_song_artist == "None" && current_song_album == "None")) ? " bar-element-right" : ""}")
+   (player)
    )
   (
    box
@@ -75,25 +78,5 @@
    (ram)
    (disk)
    )
-  )
- )
-
-(
- defwindow test
- :monitor 0 
- :geometry
- (
-  geometry
-  ; :width "90%"
-  :height "30px"
-  :anchor "left center"
-  )
- :stacking "fg"
- :reserve (struts :distance "40px" :side "top")
- :windowtype "dock"
- (
-  box
-  :class "dock"
-  "hi"
   )
  )

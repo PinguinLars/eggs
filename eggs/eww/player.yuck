@@ -1,0 +1,38 @@
+(defpoll current_song_name :initial "None" :interval "5s" `playerctl metadata title || echo "None"`)
+(defpoll current_song_artist :initial "None" :interval "5s" `playerctl metadata artist  || echo "None"`)
+(defpoll current_song_album :initial "None" :interval "5s" `playerctl metadata album || echo "None"`)
+(defpoll song_status :initial "Playing" :interval "5s" `playerctl status || echo "Stopped"`) ;;Playing, Paused or Stopped (user)
+(defvar player_button_hoverd false)
+
+(
+ defwidget player[]
+ (
+  box
+  :class "bar-element bar-element-right player-menu"
+  :space-evenly false
+  :spacing 5
+  :visible "${!(song_status == "Stopped" || (current_song_name == "None" && current_song_artist == "None" && current_song_album == "None"))}"
+  (
+   eventbox
+   :width 25
+   :class "player-button"
+   :onhover `eww update player_button_hoverd=true`
+   :onhoverlost `eww update player_button_hoverd=false`
+   :onclick `playerctl play-pause && eww poll song_status`
+   :tooltip song_status
+   (
+    image
+    ;:path "imgs/song/resume${player_button_hoverd ? "-bg" : ""}.svg"
+:path "imgs/song/${song_status != "Playing" ? "resume" : "stop"}${player_button_hoverd ? "-bg" : ""}.svg"
+    :image-width 20
+    :image-height 20
+    )
+   )
+  (
+   eventbox
+   :class "player"
+   :tooltip "${current_song_album} - ${current_song_artist}"
+   "${current_song_name}"
+   )
+  )
+ )

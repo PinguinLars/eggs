@@ -5,6 +5,7 @@
     "custom/power",
     "power-profiles-daemon",
     "tray",
+    "mpris"
   ],
   "modules-center": [
     "pulseaudio",
@@ -46,5 +47,6 @@
   "tray": {
     "show-passive-items": true,
     "icon-size": 23
-  }
+  },
+  "mrpis": {}
 }

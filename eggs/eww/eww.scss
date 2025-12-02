@@ -19,13 +19,13 @@ tooltip {
 
 .bar {
   background: rgba($background, 0.4);
-  border-radius: 25px;
-  padding-left: 10px;
-  padding-right: 10px;
+  // border-radius: 25px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 .bar-part {
-  margin-top: 3px;
+  margin-top: 1px;
   margin-bottom: 3px;
   color: $normal;
   background: none;
@@ -43,12 +43,12 @@ tooltip {
 }
 
 .bar-element-left {
-  border-top-left-radius: 15px;
+  // border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
 
 .bar-element-right {
-  border-top-right-radius: 15px;
+  // border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 
@@ -106,26 +106,36 @@ menu {
   border-radius: 10px;
 }
 
-.power-menu {
+.power-menu,
+.player-menu {
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-.dnd, .power, .tuned {
+.dnd,
+.power,
+.tuned,
+.player,
+.player-button {
   &:hover {
     background: $normal;
+    color: $background;
   }
+
   &:active {
     background: $high;
+    color: $background;
   }
 }
 
-.power {
+.power,
+.player-button {
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 5px;
 }
 
-.dock {
-  background: $background;
+.player {
+  border-radius: 5px;
+  border-bottom-right-radius: 10px;
 }

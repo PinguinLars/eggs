@@ -56,7 +56,7 @@ menu > :hover {
 }
 
 #workspaces button#niri-workspace-1 {
-  border-top-left-radius: 15px;
+  /* border-top-left-radius: 15px; */
   border-bottom-left-radius: 15px;
 }
 
