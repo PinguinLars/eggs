@@ -1,0 +1,25 @@
+;;(deflisten empty_workspace :initial "true" `niri msg event-stream | while read -r line; do niri msg -j workspaces | jq -cM '[.[] | select(.output == "eDP-1") | .idx] | sort'; done`)
+
+(
+ defwindow dashboard
+ :monitor 0
+ :geometry
+ (
+  geometry
+  :x "0%"
+  ; :y "${padding}px"
+  ; :width "${1366-padding*2}px" ;; is my monitor width
+  :width "1250"
+  :height "650"
+  :anchor "center"
+  )
+ :stacking "bg"
+ :exclusive false
+ :focusable false
+ (
+  box
+  :class "dashboard-part"
+  :visible false
+  "test"
+  )
+ )
