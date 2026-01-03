@@ -11,7 +11,8 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
-    normal: "fireworks.png",
+    normal: "christmas.png",
+//    normal: "miku.jpg",
     school: "todo/macos26.jpg",
     random: false,
 };

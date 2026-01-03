@@ -19,8 +19,7 @@ input {
   }
 
   mouse {
-    // accel-speed 1.5
-    accel-profile "flat"
+    accel-speed 1
   }
   trackpoint { }
   warp-mouse-to-focus mode="center-xy-always"
@@ -51,8 +50,9 @@ output "eDP-1" {
   focus-at-startup
 }
 
-output "HDMI-A-1" {
-  position x=0 y=0
+output "Acer Technologies SA222Q 653001BAC2X00" {
+  mode "1920x1080@100.000"
+  position x=1920 y=0
 }
 
 layout {

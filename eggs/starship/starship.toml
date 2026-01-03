@@ -22,7 +22,8 @@ $kotlin\
 $lua\
 $nodejs\
 $python\
-$rust
+$rust\
+$zig
 $character"""
 right_format = "$time"
 
@@ -199,6 +200,13 @@ format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
 version_format = 'v${major}.${minor}'
 symbol = ' '
 style = 'fg:default bg:default_bg'
+
+[zig]
+format = ' [](default_bg)[$symbol$version]($style)[](default_bg)'
+version_format = 'v${raw}'
+symbol = ' '
+style = 'fg:default bg:default_bg'
+
 
 #: template
 
