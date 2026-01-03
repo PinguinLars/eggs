@@ -11,11 +11,9 @@ let colorscheme = colors::colorschemes.rosepine;
  * //changes after sync to ~/.config/share/wallpapers)
  */
 let wallpaper = #{
-    //normal: "todo/planets.png",
-    //normal: "todo/bochi.jpeg",
-    normal: "sakura.png",
-    //normal: "todo/arch_trans.png",
-    school: "weeb.png",
+    normal: "christmas.png",
+//    normal: "miku.jpg",
+    school: "todo/macos26.jpg",
     random: false,
 };
 
@@ -141,7 +139,7 @@ export let eggs = #{
         enabled: true,
     },
     nvim: #{
-        targets: "~/.config/nvim",
+        targets: "~/.config/nvimbak",
         //templates: 
         enabled: true,
     },
