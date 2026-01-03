@@ -54,4 +54,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dreverse
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/lars/\x2ejuliaup/bin\x1e/home/lars/\x2elocal/bin\x1e/home/lars/bin\x1e/home/lars/\x2elocal/share/JetBrains/Toolbox/scripts\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/linuxbrew/\x2elinuxbrew/Homebrew/bin
+SETUVAR fish_user_paths:/home/lars/go/bin\x1e/home/lars/\x2ejuliaup/bin\x1e/home/lars/\x2elocal/bin\x1e/home/lars/bin\x1e/home/lars/\x2elocal/share/JetBrains/Toolbox/scripts\x1e/home/linuxbrew/\x2elinuxbrew/bin\x1e/home/linuxbrew/\x2elinuxbrew/Homebrew/bin

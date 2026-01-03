@@ -15,6 +15,7 @@ input {
     //<yolk> // dwt //{< if data.school_mode >}
     tap-button-map "left-right-middle"
     drag-lock
+    accel-profile "flat"
   }
 
   mouse {
@@ -41,6 +42,7 @@ spawn-at-startup "/usr/bin/swww-daemon"
 spawn-at-startup "eww" "open" "bar" "--arg" "padding=12"
 spawn-at-startup "/usr/bin/alacritty" "--daemon"
 spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
+spawn-at-startup "/usr/bin/swaylock"
 
 prefer-no-csd
 
@@ -106,8 +108,6 @@ layout {
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-animations {
-}
 
 window-rule {
   match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -182,7 +182,8 @@ binds {
   Mod+Shift+G { spawn "vesktop"; }
   Mod+Shift+Slash { show-hotkey-overlay ; }
   Mod+T { spawn "alacritty" "msg" "create-window"; }
-  Mod+Shift+T { spawn "kitty"; }
+  Mod+Alt+T { spawn "kitty"; }
+  Mod+Shift+T { spawn "zathura"; }
   Mod+D { spawn "rofi" "-show" "drun"; }
   // Mod+D { spawn "fuzzel"; }
   Super+Alt+L { spawn "swaylock"; }
@@ -325,4 +326,38 @@ overview {
 
 hotkey-overlay {
   skip-at-startup
+}
+
+recent-windows {
+  off
+  debounce-ms 750
+
+  open-delay-ms 200
+
+  highlight {
+    active-color "#999999ff"
+    urgent-color "#ff9999ff"
+    padding 30
+    corner-radius 0
+  }
+
+  previews {
+    max-height 480
+    max-scale 0.5
+  }
+
+  binds {
+    Alt+Tab         { next-window; }
+    Alt+Shift+Tab   { previous-window; }
+    Alt+grave       { next-window     filter="app-id"; }
+    Alt+Shift+grave { previous-window filter="app-id"; }
+
+    Mod+Tab         { next-window; }
+    Mod+Shift+Tab   { previous-window; }
+    Mod+grave       { next-window     filter="app-id"; }
+    Mod+Shift+grave { previous-window filter="app-id"; }
+  }
+}
+
+/-animations {
 }

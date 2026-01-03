@@ -14,6 +14,7 @@
 (include "ram.yuck")
 (include "battery.yuck")
 (include "player.yuck")
+(include "dashboard.yuck")
 
 (defpoll time :interval "1s" `date +%H:%M`)
 (defpoll date :interval "1s" `date "+%D %H:%M:%S"`)
